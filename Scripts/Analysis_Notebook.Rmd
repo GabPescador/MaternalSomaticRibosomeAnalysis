@@ -1,0 +1,977 @@
+---
+title: "Translation Factors in Zebrafish Maternal and Somatic Ribosomes"
+author: "G da Silva Pescador"
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+output:
+    html_document:
+      toc: true
+      toc-location: left
+      toc_float:
+        collapsed: false
+        smooth_scroll: true
+      number_sections: true
+      code_folding: hide
+editor_options: 
+  chunk_output_type: console
+---
+
+# Packages
+```{r Load required packages, message=FALSE, warning = FALSE}
+library(here)
+library(tidyverse)
+library(data.table)
+library(readxl)
+library(ggplot2)
+library(ggpubr)
+library(ggforce)
+library(ggborderline)
+library(ggrepel)
+library(UpSetR)
+library(eulerr)
+library(cowplot)
+library(rstatix)
+library(VennDiagram)
+library(OrgMassSpecR)
+library(org.Dr.eg.db)
+library(KEGGREST)
+library(clusterProfiler)
+
+#remotes::install_github('yihui/xfun')
+# embed_file() requires a few more packages
+xfun::pkg_load2(c('htmltools', 'mime'))
+```
+
+# Functions
+
+```{r}
+# Get gene name from KEGG pathways
+
+# Create a function that gives me gene names based on the KEGG IDs
+getGeneNames_KEGG <- function(pathwayID){
+  
+  # pathwayID should be either number or with organism specified
+  # e.g., dre03010 where "dre" refers to Danio rerio
+  pathway_genes <- keggGet(pathwayID)
+  
+  # Extract gene information for the pathway
+  genes_info <- character()
+  for(i in 1:length(pathway_genes)){
+    temp <- pathway_genes[[i]]$GENE # Get gene annotation from pathway
+    temp <- temp[seq(2, length(temp), by = 2)] # get only gene names
+    temp <- sapply(strsplit(temp, " "), `[`, 1) # Keep only the first word, which is the gene name
+    temp <- sub("[^a-zA-Z0-9:]", "", temp) # Get rid of ; from the name
+    genes_info <- append(genes_info, temp)
+  }
+  print(genes_info)
+}
+
+# Make rownames of upsetR to be your list of arguments
+# This was created by: https://github.com/docmanny
+fromList <- function (input) {
+  # Make rownames of upsetR to be your list of arguments
+  # created by: https://github.com/docmanny
+  # Same as original fromList()...
+  elements <- unique(unlist(input))
+  data <- unlist(lapply(input, function(x) {
+      x <- as.vector(match(elements, x))
+      }))
+  data[is.na(data)] <- as.integer(0)
+  data[data != 0] <- as.integer(1)
+  data <- data.frame(matrix(data, ncol = length(input), byrow = F))
+  data <- data[which(rowSums(data) != 0), ]
+  names(data) <- names(input)
+  # ... Except now it conserves your original value names!
+  row.names(data) <- elements
+  return(data)
+}
+
+# Wrapper around Digest from OrgMassSpecR to digest several sequences from a dataframe
+DigestBatch <- function(df, enz, miss){
+  # Batch a dataframe of protein sequences and rbind the figestion results
+  # df is a dataframe with aminoacid sequence in a column named Sequence
+  # df also needs first column to have the protein ID
+  # enz specifies enzyme from function Digest
+  # miss specifies how many missing cleavages from function Digest
+  output <- data.frame()
+  for(i in 1:nrow(df)){
+  temp <- Digest(df$Sequence[i],
+                 enzyme = enz, 
+                 missed = miss)
+  temp$Protein <- as.character(df[i,1])
+  temp$Name <- as.character(df[i,5])
+  output <- rbind(output, temp)
+  }
+return(output)
+}
+
+# function to transform dataframe sequences into FASTA format
+fastaTransform <- function(df, organism, outputpath){
+  # Takes a dataframe downloaded from UNIPROT that has at least:
+  # Entry - with uniprot ID
+  # Sequence - with aminoacid sequence from UNIPROT
+  # Then transforms all sequences into FASTA format
+  
+df2 <- data.frame(id = c(df$Entry),
+                 Organism = organism,
+                 seq = c(df$Sequence))
+df2$fasta_name <- paste0(df2$id, "_", df2$Organism)
+
+zf_fasta <- unlist(
+  mapply(function(fasta_name, seq) {
+    c(paste0(">", fasta_name), seq)
+  }, df2$fasta_name, df2$seq, SIMPLIFY = FALSE)
+)
+writeLines(zf_fasta, paste0(outputpath, organism, "_output.fasta"))
+  
+}
+
+```
+
+# Introduction
+
+This is a collaboration between me and Ariel (Bazzini Lab), and Leo and Kamena (Kostova Lab).
+
+The goal of this analysis is to use public zebrafish proteomics datasets to compare presence or absence of translation factors when only maternal or only somatic ribosomes are present in the life of the embryo.
+
+Datasets were searched in ProteomeXchange database for the keyword "zebrafish", leading to 40 deposited datasets in total. These datasets span early embryos (0hpf - 1dpf) and include later larvae time points (3-, 4-, 5dpf). Then, the data was downloaded and processed with FragPipe v.22.0 in headless mode with the exact same FASTA file for the zebrafish protein annotation. Settings ran in FragPipe were specific to each dataset, as there was a mix of isotope labeling and label-free quantification datasets, settings and configurations should all be in "/ProcessingFiles/".
+
+A list of all datasets that passed quality check is included in "/ProcessingFiles/Datasets_metadata.xlsx".
+
+# Loading and annotating all datasets
+```{r, message=FALSE, results='hide'}
+# Define the path to look for files
+DirPath <- here("SearchResults")
+
+# Define the file extension to look for
+FileExtLFQ <- "combined_protein.tsv$" # combined_protein.tsv for label-free
+FileExtLabel <- "abundance_gene_MD.tsv$" # abundance_gene_MD.tsv for isobaric labeling
+
+# List all files with the specified ending notation in subdirectories for LFQ data
+FileListLFQ <- list.files(path = DirPath, 
+                              pattern = FileExtLFQ, 
+                              recursive = TRUE, 
+                              full.names = TRUE)
+
+data <- list()
+# Loop through each file for LFQ
+for (file_path in FileListLFQ) {
+  # Extract the dataset name
+  dataset_name <- str_extract(file_path, "PXD\\d+")
+  
+  # Create an object name based on the subfolder name
+  object_name <- paste0(dataset_name, "_LFQdata")
+  
+  # Read the file into the created object name
+  # assign(object_name, fread(file_path), envir = .GlobalEnv) # assign doesn't work well with knitting so will assign things to a list instead
+  data[[object_name]] <- fread(file_path)
+  
+  # Print a message to confirm that the file has been read
+  cat("Loaded", file_path, "into object", object_name, "\n")
+}
+
+# List all files with the specified ending notation in subdirectories for LFQ data
+FileListLabel <- list.files(path = DirPath, 
+                              pattern = FileExtLabel, 
+                              recursive = TRUE, 
+                              full.names = TRUE)
+
+# Loop through each file for isobaric label
+for (file_path in FileListLabel) {
+  # Extract the dataset name
+  dataset_name <- str_extract(file_path, "PXD\\d+")
+  
+  # Create an object name based on the subfolder name
+  object_name <- paste0(dataset_name, "_Isobaricdata")
+  
+  # Read the file into the created object name
+  # assign(object_name, fread(file_path), envir = .GlobalEnv)
+  data[[object_name]] <- fread(file_path)
+  
+  # Print a message to confirm that the file has been read
+  cat("Loaded", file_path, "into object", object_name, "\n")
+}
+```
+
+Since we are interested in different time points, I will annotate the column names to make it easier to filter based on stages.
+
+*Note:* Next time should probably set this in the FragPipe workflow/manifest instead.
+
+```{r}
+# Start with LFQ objects
+
+#PXD002124_LFQdata is ok
+names(data[["PXD005129_LFQdata"]]) <- str_replace(names(data[["PXD005129_LFQdata"]]), " Intensity", "_Oocyte_Intensity")
+#PXD005137_LFQdata is ok
+names(data[["PXD009612_LFQdata"]]) <- str_replace(names(data[["PXD009612_LFQdata"]]), " Intensity", "_6dpf_Intensity")
+#PXD010922_LFQdata is ok
+#PXD013835_LFQdata is ok
+#PXD016714_LFQdata is ok
+#PXD017419_LFQdata is ok
+#PXD017896_LFQdata is ok
+names(data[["PXD021302_LFQdata"]]) <- str_replace(names(data[["PXD021302_LFQdata"]]), " Intensity", "_Oocyte_Intensity")
+names(data[["PXD021670_LFQdata"]]) <- str_replace(names(data[["PXD021670_LFQdata"]]), " Intensity", "_5dpf_Intensity")
+names(data[["PXD022578_LFQdata"]]) <- str_replace(names(data[["PXD022578_LFQdata"]]), " Intensity", "_7-10dpf_Intensity")
+names(data[["PXD025850_LFQdata"]]) <- str_replace(names(data[["PXD025850_LFQdata"]]), " Intensity", "_6dpf_Intensity")
+#PXD039348_LFQdata is ok
+names(data[["PXD042791_LFQdata"]]) <- str_replace(names(data[["PXD042791_LFQdata"]]), "E Intensity", "Oocyte_Intensity")
+names(data[["PXD042791_LFQdata"]]) <- str_replace(names(data[["PXD042791_LFQdata"]]), "L Intensity", "Liver_Intensity")
+names(data[["PXD043679_LFQdata"]]) <- str_replace(names(data[["PXD043679_LFQdata"]]), "72h", "3dpf_Intensity")
+names(data[["PXD043679_LFQdata"]]) <- str_replace(names(data[["PXD043679_LFQdata"]]), "120h", "5dpf_Intensity")
+```
+
+# Quality Check for datasets
+
+*Note:* Since we are interested only in presence/absence I did not perform any sort of normalization for the datasets.
+
+```{r, warning=FALSE}
+PXDObjects <- names(data)[str_detect(names(data), "LFQ")]
+
+# First step is clean the data from contaminants, since we are only interested in the zebrafish proteins identified.
+
+# This for loop will filter out contaminant proteins identified from the dataframes and assign them to a new object "_Cleaned"
+data_cleaned <- list()
+for(i in PXDObjects){
+  # Create an object name based on the subfolder name
+  object_name <- paste0(i, "_Cleaned")
+  
+  # Assign the filtered dataframe to a new object
+  df <- data[[i]] %>%
+    filter(!str_detect(Protein, "contam"))
+  
+  # Assign the filtered dataframe to a new object with the specified name
+  #assign(object_name, df, envir = .GlobalEnv)
+  data_cleaned[[object_name]] <- df
+}
+
+# Now we can start checking how the expression without normalization is in each experiment by plotting boxplots.
+
+PXDObjectsCl <- names(data_cleaned)
+
+temp <- list()
+for(i in PXDObjectsCl){
+  
+  # Assign the filtered dataframe to a new object
+  df <- data_cleaned[[i]] %>%
+    dplyr::select(`Protein`, `Protein ID`, `Gene`, `Description`, contains("Spectral Count"):last_col(1), -contains("MaxLFQ"), -contains("Spectral Count")) %>%
+    rename_with(~ str_replace(., " Intensity", ""), contains("Intensity")) %>%
+    reshape2::melt(id.vars = c("Protein", "Protein ID", "Gene", "Description"))
+  
+  # Plot boxplots for each dataset to look for normalization
+  plots <- df %>%
+    ggplot(aes(x=variable, y=log2(value))) +
+    geom_boxplot() +
+    theme_classic() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+    ggtitle(i)
+
+  ggsave(plot = plots, paste0(here("Plots/"), i, "_boxplot", ".pdf"), width = 6, height = 5)  
+  
+  temp[[i]] <- plots
+}
+
+# Then saving all filtered tables
+for(i in PXDObjectsCl){
+  data_cleaned[[i]] %>%
+    write_csv(paste0(here("OutputTables/"), i, ".csv"))
+}
+```
+
+*Note:* Same here for labelled datasets, no normalization was performed.
+
+```{r, warning=FALSE}
+PXDObjects <- names(data)[str_detect(names(data), "Isobaric")]
+
+
+for(i in PXDObjects){
+  
+  # Assign the filtered dataframe to a new object
+  df <- data[[i]] %>%
+    setNames(make.unique(names(.))) %>%
+    dplyr::select(`Index`, `ProteinID`, ReferenceIntensity:last_col()) %>%
+    reshape2::melt(id.vars = c("Index", "ProteinID"))
+  
+  # Plot boxplots for each dataset to look for normalization
+  plots <- df %>%
+    filter(!variable == "ReferenceIntensity") %>%
+    ggplot(aes(x=variable, y=log2(value))) +
+    geom_boxplot() +
+    theme_classic() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+    ggtitle(i)
+
+  ggsave(plot = plots, paste0(here("Plots/"), i, "_boxplot", ".pdf"), width = 6, height = 5)  
+  
+  temp[[i]] <- plots
+}
+
+# Then saving all filtered tables
+for(i in PXDObjects){
+  data[[i]] %>%
+    write_csv(paste0(here("OutputTables/"), i, ".csv"))
+}
+```
+
+```{r, fig.height=8, fig.width=11, warning=FALSE}
+cowplot::plot_grid(plotlist = temp)
+```
+
+# Compiling protein IDs per stage
+
+First, I will filter any protein that is not quantified in any of the samples, as they are usually low confident protein identifications. Then, I will create a combined long format data frame for easier manipulation of the IDs.
+
+## LFQ Tables
+
+```{r}
+PXDObjects <- names(data_cleaned)[str_detect(names(data_cleaned), "LFQdata_Cleaned")]
+
+# First, filtering all proteins that have no quantification, and were only found as peptide identifications.
+long_df <- data.frame()
+for(i in PXDObjects){
+   # Create an object name 
+  object_name <- "Combined_Filtered"
+  
+  # Assign the filtered dataframe to a new object
+  df <- data_cleaned[[i]] %>%
+    dplyr::select(colnames(.)[1:13], contains("Intensity"), -contains("MaxLFQ"), last_col()) %>%
+    relocate(., `Indistinguishable Proteins`, .after = `Combined Unique Spectral Count`) %>%
+    reshape2::melt(id.vars = c(colnames(.)[1:14])) %>%
+    filter(!value == 0) %>%
+    mutate(Dataset = str_split(i, "_")[[1]][1])
+  
+  # Rbind all melted tables and filter for values == 0
+  long_df <- rbind(long_df, df)
+  
+}
+
+Combined_Filtered <- long_df
+
+# Now annotating the stages
+# unique(Combined_Filtered$variable)
+
+# very manual way of doing it, I should automate it in the future
+Combined_Filtered <- Combined_Filtered %>%
+  filter(!str_detect(variable, "Liver|liver")) %>%
+  mutate(Stage = case_when(
+    str_detect(.$variable, "oocyte|Oocyte") ~ "Oocyte",
+    str_detect(.$variable, "0hpf") ~ "s0hpf",
+    str_detect(.$variable, "4c") ~ "s1hpf",
+    str_detect(.$variable, "32c") ~ "s1-75hpf",
+    str_detect(.$variable, "2hpf") ~ "s2hpf",
+    str_detect(.$variable, "256c") ~ "s2-5hpf",
+    str_detect(.$variable, "512c") ~ "s2-75hpf",
+    str_detect(.$variable, "1000c") ~ "s3hpf",
+    str_detect(.$variable, "oblong|Oblong") ~ "s3-66hpf",
+    str_detect(.$variable, "^4hpf") ~ "s4hpf",
+    str_detect(.$variable, "dome|Dome") ~ "s4-33hpf",
+    str_detect(.$variable, "6hpf") ~ "s6hpf",
+    str_detect(.$variable, "bud|Bud") ~ "s10hpf",
+    str_detect(.$variable, "16hpf") ~ "s16hpf",
+    str_detect(.$variable, "24hpf") ~ "s24hpf",
+    str_detect(.$variable, "28hpf") ~ "s28hpf",
+    str_detect(.$variable, "3dpf") ~ "s3dpf",
+    str_detect(.$variable, "5dpf") ~ "s5dpf",
+    str_detect(.$variable, "6dpf") ~ "s6dpf",
+    str_detect(.$variable, "10dpf") ~ "s10dpf",
+  ))
+
+write_csv(Combined_Filtered, paste0(here("OutputTables/"), "LFQ_combined_filtered.csv"))
+
+knitr::kable(head(Combined_Filtered))
+```
+
+## Isobaric Label Tables
+
+Same for Isobaric tables.
+
+```{r}
+PXDObjects <- names(data)[str_detect(names(data), "Isobaric")]
+
+# First, filtering all proteins that have no quantification, and were only found as peptide identifications.
+long_df <- data.frame()
+for(i in PXDObjects){
+   # Create an object name based on the subfolder name
+  object_name <- "Combined_Filtered_Isobaric"
+  
+  # Assign the filtered dataframe to a new object
+  df <- data[[i]] %>%
+    #dplyr::select(colnames(.)[1:5], contains("Intensity"), -contains("MaxLFQ"), last_col()) %>%
+    #relocate(., `Indistinguishable Proteins`, .after = `Combined Unique Spectral Count`) %>%
+    reshape2::melt(id.vars = c(colnames(.)[1:5])) %>%
+    filter(!value == 0) %>%
+    mutate(Dataset = str_split(i, "_")[[1]][1])
+  
+  # Rbind all melted tables and filter for values == 0
+  long_df <- rbind(long_df, df)
+  
+}
+
+Combined_Filtered_Isobaric <- long_df
+# Now annotating the stages
+# unique(Combined_Filtered_Isobaric$variable)
+
+Combined_Filtered_Isobaric <- Combined_Filtered_Isobaric %>%
+  mutate(Stage = case_when(
+    str_detect(.$variable, "whole_cell") ~ "s6hpf",
+    str_detect(.$variable, "migrasome") ~ "s6hpf_migrasome",
+    str_detect(.$variable, "sample-01|sample-02|sample-03|sample-04|sample-05|sample-06|sample-07|sample-08|sample-09|sample-10") & str_detect(.$Dataset, "PXD013835") ~ "s6hpf_migrasome",
+    str_detect(.$variable, "sample-01|sample-02|sample-03|sample-04|sample-05|sample-06|sample-07|sample-08|sample-09|sample-10") & str_detect(.$Dataset, "PXD017419") ~ "s5dpf",
+    str_detect(.$variable, "0hpf") ~ "s0hpf",
+    str_detect(.$variable, "4c") ~ "s1hpf",
+    str_detect(.$variable, "32c") ~ "s1-75hpf",
+    str_detect(.$variable, "2hpf") ~ "s2hpf",
+    str_detect(.$variable, "256c") ~ "s2-5hpf",
+    str_detect(.$variable, "512c") ~ "s2-75hpf",
+    str_detect(.$variable, "1000c") ~ "s3hpf",
+    str_detect(.$variable, "3hpf") ~ "s3hpf",
+    str_detect(.$variable, "oblong|Oblong") ~ "s3-66hpf",
+    str_detect(.$variable, "^4hpf") ~ "s4hpf",
+    str_detect(.$variable, "dome|Dome") ~ "s4-33hpf",
+    str_detect(.$variable, "5hpf") ~ "s5hpf",
+    str_detect(.$variable, "6hpf") ~ "s6hpf",
+    str_detect(.$variable, "bud|Bud") ~ "s10hpf",
+    str_detect(.$variable, "16hpf") ~ "s16hpf",
+    str_detect(.$variable, "24hpf") ~ "s24hpf",
+    str_detect(.$variable, "28hpf") ~ "s28hpf",
+    str_detect(.$variable, "3dpf") ~ "s3dpf",
+    str_detect(.$variable, "5dpf") ~ "s5dpf",
+    str_detect(.$variable, "6dpf") ~ "s6dpf",
+    str_detect(.$variable, "10dpf") ~ "s10dpf",
+  ))
+
+write_csv(Combined_Filtered_Isobaric,
+          paste0(here("OutputTables/"), "Isobaric_combined_filtered.csv"))
+
+knitr::kable(head(Combined_Filtered_Isobaric))
+```
+
+## Combining both long data frames into one
+
+To be able to plot in a more visual way, I decided to combine stages based on the plot Leo sent me on Maternal/Somatic K-mers. That way I named each group type as:
+
+- Maternal: Between 0hpf to 10hpf (>90% maternal)
+- Maternal-Somatic: Between 16hpf to 28hpf (< 50% somatic)
+- Somatic: Any other time point with > 50% somatic contribution
+
+```{r}
+# First make them the same columns
+LFQ <- Combined_Filtered[,c(2,4,15,16,17,18)]
+LFQ$value <- log2(LFQ$value)
+Isobaric <- Combined_Filtered_Isobaric[,c(1,3,6,7,8,9)]
+Isobaric$Index <- tolower(Isobaric$Index)
+Isobaric <- relocate(Isobaric, ProteinID, .before = Index)
+colnames(LFQ) <- c("Accession", "Name", "variable", "value", "Dataset", "Stage")
+colnames(Isobaric) <- c("Accession", "Name", "variable", "value", "Dataset", "Stage")
+
+Combined <- rbind(LFQ, Isobaric)
+
+# Now annotate if they are Maternal, MaternalSomatic or Somatic stages based on the annotated stages
+Combined$Type <- ifelse(Combined$Stage %in% c("Oocyte", "oocyte", "s0hpf", "s1hpf", "s1-75hpf", "s2hpf", "s2-5hpf", "s2-75hpf",
+              "s3hpf", "s3-66hpf", "s4hpf", "s4-33hpf", "s5hpf", "s6hpf", "s6hpf_migrasome",
+              "s10hpf"),
+              "Maternal",
+              ifelse(Combined$Stage %in% c("s16hpf", "s24hpf", "s28hpf"),
+                     "MaternalSomatic",
+                     "Somatic"))
+
+write_csv(Combined, paste0(here("OutputTables/"), "Combined_both_longformat.csv"))
+
+knitr::kable(head(Combined))
+```
+
+
+# Checking how many unique proteins we identified per dataset and per stage
+
+## Per dataset
+```{r}
+# How many proteins per dataset
+Combined %>%
+  group_by(Dataset) %>%
+  summarize(Counts = length(unique(Accession))) %>%
+  mutate(Dataset = reorder(Dataset, -Counts)) %>%
+  ggplot(aes(x=Dataset, y=Counts)) +
+  geom_bar(stat = "identity", fill = "black") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ylab("Unique Proteins")
+
+ggsave(paste0(here("Plots/"), "bar_uniqueProteins.pdf"), width = 4, height = 4)
+```
+
+## Per developmental stage
+```{r}
+# How many proteins per stage
+ordering <- c("Oocyte", "s0hpf", "s1hpf", "s1-75hpf", "s2hpf", "s2-5hpf", "s2-75hpf",
+              "s3hpf", "s3-66hpf", "s4hpf", "s4-33hpf", "s5hpf", "s6hpf", "s6hpf_migrasome",
+              "s10hpf", "s16hpf", "s24hpf", "s28hpf", "s3dpf",  "s5dpf", "s6dpf", "s10dpf")
+
+Combined %>%
+  group_by(Stage) %>%
+  summarize(Counts = length(unique(Accession))) %>%
+  mutate(Stage = factor(Stage, ordering)) %>%
+  ggplot(aes(x=Stage, y=Counts)) +
+  geom_bar(stat = "identity", fill = "black") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ylab("Unique Proteins") +
+  xlab("")
+
+ggsave(paste0(here("Plots/"), "bar_uniqueProteins_perstage.pdf"), width = 4, height = 2.5)
+```
+
+# Getting lists of proteins of interest
+
+The main interest is differences in translation factors and Piwi pathways between different stages, so I will:
+
+1) Get a list of which are these genes for each pathway.
+2) Check each dataset for presence and compile presence for each stage.
+3) Plot venn diagrams (eulerr) for presence in each developmental stage.
+4) Generate a table with the shared proteins and the non-shared ones for Leo.
+
+## KEGG Lists
+
+KEGG lists problem is that it only gives gene names, and not an ID or accession ID.
+
+This did not give all terms that I was looking for, so I will try different method.
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# View(keggList("organism"))
+# Search for translation-related pathways
+# T01004 specifies Danio rerio as an organism to search for
+# translation_pathways <- c(keggFind(database = "T01004", query = "03008"),
+#                           keggFind(database = "T01004", query = "03015"),
+#                           keggFind(database = "T01004", query = "03010"))
+
+# Search for piwi-related pathways
+# piwi_pathways <- keggFind(database = "pathway", query = "piRNA") # seems like there is no piRNA pathway from KEGG
+# 
+# # Get the genes associated with the pathway
+# # Any pathway number can be specified to Danio rerio by adding "dre" before it
+# translation_pathways <- c("dre03010", "dre03008", "dre03015")
+# 
+# translation_list <- getGeneNames_KEGG(translation_pathways)
+# 
+# # Save this just in case
+# save(translation_list, file = "./OutputTables/KEGG_translation.Rdata")
+```
+
+## Gene Ontology (GO) Lists
+
+Using clusterprofiler for GO was not great, so I will stick to downloading from Uniprot directly moving forward.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# Read the FASTA file we used to get all genes we searched for
+# zf_fasta <- read.fasta("./ProcessingFiles/2024-10-02-decoys-reviewed-contam-UP000000437.fas",
+#                        as.string = TRUE)
+# 
+# zf_genes <- as.data.frame(names(zf_fasta)[!str_detect(names(zf_fasta), "^contam|^rev")]) # Take out contaminants and reverse proteins
+# colnames(zf_genes) <- "FASTA_ID"
+# zf_genes$Accession <- str_split_i(zf_genes$FASTA_ID,
+#                                       "\\|",i = 2) # Take accession IDs
+# zf_genes$Name <- str_split_i(zf_genes$FASTA_ID,
+#                                       "\\|",i = 3) # Take gene names
+# zf_genes$Name <- tolower(str_replace(zf_genes$Name, "_DANRE", ""))
+# 
+# # Search for genes related to the translation GO term
+# # BP
+# gene_list <- groupGO(gene = zf_genes$Accession, 
+#                       OrgDb = org.Dr.eg.db, 
+#                       keyType = "UNIPROT", 
+#                       ont = "BP",
+#                      level = 7)
+# 
+# BP_gene_list_df <- as.data.frame(gene_list@result)
+# translation_GO_BP <- BP_gene_list_df %>%
+#   filter(str_detect(Description, "translation"))
+# 
+# translation_GO <- character()
+# for(i in 1:length(translation_GO_BP$geneID)){
+#   temp <- str_split(translation_GO_BP$geneID[i], "/")[[1]]
+#   translation_GO <- append(translation_GO, temp)
+# }
+# translation_GO <- unique(translation_GO)
+
+# piRNA
+# None found this way, will skip.
+# gene_list <- groupGO(gene = zf_genes$Accession, 
+#                       OrgDb = org.Dr.eg.db, 
+#                       keyType = "UNIPROT", 
+#                       ont = "BP",
+#                      level = 11)
+# 
+# BP_gene_list_df <- as.data.frame(gene_list@result)
+# piRNA_GO_BP <- BP_gene_list_df %>%
+#   filter(str_detect(Description, "piRNA"))
+```
+
+## Using UNIPROT
+
+No package worked properly, so I resorted to searching uniprot website for the GO Terms in zebrafish and downloading the IDs.
+
+Translation GOTerms:
+
+- [GO:0006412](https://amigo.geneontology.org/amigo/term/GO:0006412)
+
+piRNA GOTerms:
+
+- [GO:0140541](https://amigo.geneontology.org/amigo/term/GO:0140541)
+- [GO:0034587](https://amigo.geneontology.org/amigo/term/GO:0034587)
+
+```{r}
+# For translation-related proteins
+translation_UP <- rbind(fread(here("OutputTables", "uniprotkb_go_0006412_AND_taxonomy_id_79_2024_11_07.tsv")),                        fread(here("OutputTables", "uniprotkb_taxonomy_id_7955_AND_go_00081_2024_11_08.tsv")))
+
+piRNA_UP <- fread(here("OutputTables", "uniprotkb_go_0140541_OR_go_0034587_OR_g_2024_11_07.tsv"))
+```
+
+
+# Translation Protein IDs
+
+```{r, warning=FALSE, message=FALSE, results='hide'}
+# First filter the long df
+translation_related <- filter(Combined, Accession %in% translation_UP$Entry)
+
+# Now keep only the unique Protein IDs
+translation_related <- translation_related %>%
+  group_by(Stage) %>%
+  summarize(Accession = unique(Accession))
+
+translation_related <- merge(translation_related, Combined[,c(1,2,7)], by="Accession") %>%
+  .[!duplicated(.),]
+
+# Now create a list of protein IDs for each stage
+translation_related_type <- translation_related %>%
+  group_by(Type) %>%
+  summarize(Accession = unique(Accession))
+
+stage_list_translation <- split(translation_related_type$Accession, translation_related_type$Type)
+
+# # Set order
+# ordering <- c("s0hpf", "s1hpf", "s1-75hpf", "s2hpf", "s2-5hpf", "s2-75hpf",
+#               "s3hpf", "s3-66hpf", "s4hpf", "s4-33hpf", "s5hpf", "s6hpf", "s6hpf_migrasome",
+#               "s10hpf", "s16hpf", "s24hpf", "s28hpf", "s3dpf",  "s5dpf", "s6dpf", "s10dpf")
+
+# Euler plot
+euler_trans <- euler(stage_list_translation)
+
+p1 <- plot(euler_trans,
+     quantities = TRUE)
+
+p1
+
+pdf(paste0(here("Plots/"), "venn_translation_proteins.pdf"), width = 4, height = 4)
+p1
+dev.off()
+
+# UpsetR plot
+p1 <- upset(fromList(stage_list_translation),
+      order.by = "freq",
+      nsets = 20)
+
+pdf(paste0(here("Plots/"),"upsetR_translation_proteins.pdf"), width = 4, height = 4)
+p1
+dev.off()
+
+p1
+```
+
+## Getting which proteins are from which group
+```{r}
+# Getting each groups values
+df <- p1$New_data
+# Find unique intersections for each row
+df$Intersection <- apply(df[, c("Maternal", "MaternalSomatic", "Somatic")], 1, function(row) {
+  # Get the names of the columns with value 1
+  intersecting_groups <- names(row)[row == 1]
+  # Concatenate the names to form the intersection label
+  paste(intersecting_groups, collapse = "_")
+})
+
+df$Acession <- rownames(df)
+# Make this more readable with gene names
+for(i in df$Intersection){
+  temp <- df %>%
+  filter(Intersection == i) %>%
+  pivot_wider(id_cols = Acession,
+              names_from = Intersection,
+              values_from = Intersection)
+  
+  colnames(temp) <- c(i, "type")
+  temp <- merge(temp, unique(Combined[,c(1,2)]),
+        by.x=i, by.y="Accession")
+  
+  write_csv(temp, paste0(here("OutputTables/"), "translation_", i, ".csv"))
+}
+
+knitr::kable(head(temp))
+```
+
+# piRNA Protein IDs
+
+```{r, warning=FALSE, message=FALSE, results='hide'}
+# First filter the long df
+piRNA_related <- filter(Combined, Accession %in% piRNA_UP$Entry)
+
+# Now keep only the unique Protein IDs
+piRNA_related <- piRNA_related %>%
+  group_by(Stage) %>%
+  summarize(Accession = unique(Accession))
+
+piRNA_related <- merge(piRNA_related, Combined[,c(1,2,7)], by="Accession") %>%
+  .[!duplicated(.),]
+
+# Now create a list of protein IDs for each stage
+piRNA_related_type <- piRNA_related %>%
+  group_by(Type) %>%
+  summarize(Accession = unique(Accession))
+
+stage_list_piRNA <- split(piRNA_related_type$Accession, piRNA_related_type$Type)
+
+euler_piRNA <- euler(stage_list_piRNA)
+
+
+p2 <- plot(euler_piRNA,
+     quantities = TRUE)
+
+p2
+
+pdf(paste0(here("Plots/"), "venn_piRNA_proteins.pdf"), width = 4, height = 4)
+p2
+dev.off()
+
+p2 <- upset(fromList(stage_list_piRNA),
+      order.by = "freq",
+      nsets = 20)
+
+pdf(paste0(here("Plots/"), "upsetR_piRNA_proteins.pdf"), width = 4, height = 4)
+p2
+dev.off()
+
+p2
+```
+
+## Getting groups
+```{r}
+# Getting each groups values
+df <- p2$New_data
+# Find unique intersections for each row
+df$Intersection <- apply(df[, c("Maternal", "MaternalSomatic", "Somatic")], 1, function(row) {
+  # Get the names of the columns with value 1
+  intersecting_groups <- names(row)[row == 1]
+  # Concatenate the names to form the intersection label
+  paste(intersecting_groups, collapse = "_")
+})
+
+df$Acession <- rownames(df)
+# Make this more readable with gene names
+for(i in df$Intersection){
+  temp <- df %>%
+  filter(Intersection == i) %>%
+  pivot_wider(id_cols = Acession,
+              names_from = Intersection,
+              values_from = Intersection)
+  
+  colnames(temp) <- c(i, "type")
+  temp <- merge(temp, unique(Combined[,c(1,2)]),
+        by.x=i, by.y="Accession")
+  
+  write_csv(temp, paste0(here("OutputTables/"), "piRNA_", i, ".csv"))
+}
+
+knitr::kable(head(temp))
+```
+
+# Most translated genes between 0-6hpf
+
+Here, we will get a list of the top 10 translated genes from our [proteomics dataset](https://doi.org/10.1016/j.celrep.2024.114769) for Leo to use.
+
+```{r, warning=FALSE}
+# Load the tables for each timepoint
+a <- read_excel(here("OutputTables", "daSilvaPescador_TableS1.xlsx"),
+                skip = 1,
+                sheet = 2)
+a$`2h_adj.P.Val` <- as.numeric(a$`2h_adj.P.Val`)
+a$`2h_adj.P.Val` <- format(a$`2h_adj.P.Val`, scientific = FALSE) # for some reason it transforms in character, hence the second as.numeric
+a$`2h_adj.P.Val` <- as.numeric(a$`2h_adj.P.Val`)
+a$`2h_logFC` <- as.numeric(a$`2h_logFC`)
+
+b <- read_excel(here("OutputTables", "daSilvaPescador_TableS1.xlsx"),
+                skip = 1,
+                sheet = 3)
+b$`4h_adj.P.Val` <- as.numeric(b$`4h_adj.P.Val`)
+b$`4h_adj.P.Val` <- format(b$`4h_adj.P.Val`, scientific = FALSE)
+b$`4h_adj.P.Val` <- as.numeric(b$`4h_adj.P.Val`)
+b$`4h_logFC` <- as.numeric(b$`4h_logFC`)
+
+c <- read_excel(here("OutputTables", "daSilvaPescador_TableS1.xlsx"),
+                skip = 1,
+                sheet = 4)
+c$`6h_adj.P.Val` <- as.numeric(c$`6h_adj.P.Val`)
+c$`6h_adj.P.Val` <- format(c$`6h_adj.P.Val`, scientific = FALSE)
+c$`6h_adj.P.Val` <- as.numeric(c$`6h_adj.P.Val`)
+c$`6h_logFC` <- as.numeric(c$`6h_logFC`)
+
+# Now select only top 30 from all timepoints and get the union
+# First filter based on p-value
+hpf2 <- filter(a, `2h_adj.P.Val` <= 0.05)
+hpf4 <- filter(b, `4h_adj.P.Val` <= 0.05)
+hpf6 <- filter(c, `6h_adj.P.Val` <= 0.05)
+
+# Now order based on logFC and take the top 20 of each timepoint
+for(i in c("hpf2", "hpf4", "hpf6")){
+  df <- get(i)
+  column <- df[[6]]
+  temp <- df %>%
+    filter(column >= 1) %>%
+    arrange(desc(.[,6])) %>% # Sort by logFC descending value
+    distinct(accession, .keep_all = TRUE) # Keep only unique accessions
+    # slice_head(n = 20) # Select the top 10 rows
+  
+  # Create an object name based on the subfolder name
+  object_name <- i
+  
+  # Assign to a new object
+  assign(object_name, temp, envir = .GlobalEnv)
+  
+  write_csv(temp, paste0(here("OutputTables/"), i, "_top20_translated.csv"))
+}
+
+# Get the intersection of accessions between the three tables
+common_accessions <- Reduce(intersect,list(hpf2$accession,
+                                           hpf4$accession,
+                                           hpf6$accession))
+
+
+# Now merge all tables for the top translated genes
+merged_df <- merge(filter(hpf2, accession %in% common_accessions),
+      filter(hpf4, accession %in% common_accessions)[,c(1,6,7)])
+
+merged_df <- merge(merged_df,
+      filter(hpf6, accession %in% common_accessions)[,c(1,6,7)])
+
+# save the final table
+write_csv(merged_df, paste0(here("OutputTables/"), "top10_translated_alltimepoints.csv"))
+
+knitr::kable(merged_df)
+```
+
+# Most translated at 5dpf based on Ribo-seq
+
+Here I am creating a list of top translated genes at 5dpf, since they are interested in testing differences in translation between Somatic and Maternal ribosomes for different transcripts. The 5dpf riboseq data is from [this paper](https://doi.org/10.1242/dev.098343).
+
+```{r, warning=FALSE, message=FALSE}
+a <- fread(here("OutputTables", "ZebraFish_RiboSeq_exp.csv"))
+
+# Filter based on RNA expression to be at least 3 rpkms
+c <- a %>%
+  filter(rpkmORF_RNA >= 3)
+
+# Calculate TE
+c <- c %>%
+  mutate(TE = log2((rpkmORF_RPF+0.005)/(rpkmORF_RNA+0.005)))
+
+# Take top 10 translated genes
+d <- c %>%
+  arrange(desc(.[,8])) %>% # Sort by logFC descending value
+  distinct(orf_id, .keep_all = TRUE) %>% # Keep only unique accessions
+  slice_head(n = 20) # Select the top 10 rows
+
+# Putting gene names back
+zf <- read_csv(here("OutputTables", "danRer11_geneID_transcriptID_Names.csv"))
+d <- merge(d, zf, by.x="orf_id", by.y="ensembl_transcript_id")
+d <- relocate(d, Name, .after = orf_id)
+d <- relocate(d, ensembl_gene_id, .before = orf_id)
+colnames(d) <- c("ensembl_gene_id", "ensembl_transcript_id", "Name", colnames(d)[4:10])
+d <- d %>%
+  arrange(desc(.[,9]))
+
+write_csv(d, paste0(here("OutputTables/"), "top20_TE_5dpf.csv"))
+
+knitr::kable(head(d))
+```
+
+Some of the top genes for TE have absurd differences between RPF and RNAseq, so I wouldn't use them as prime transcripts for further experiments as they might be outliers for many reasons.
+
+# Creating FASTA files with rabbit and zebrafish translation related proteins to check for conservation of sequence
+
+Sequences were downloaded directly from UNIPROT.
+
+The concern here is the use of purified ribosomes with the rabbit reticulocyte system, where in mass spec we might not be able to differentiate some of the translation factors. So I will check for unique peptides from both species.
+
+Again, these sequences were manually downloaded from UNIPROT by searching for their species ID and GO term related to translation.
+
+```{r}
+zf <- read_excel(here("OutputTables", "zf_translation_uniprotkb_taxonomy_id_7955_AND_go_00064_2025_04_14-2.xlsx"))
+rb <- read_excel(here("OutputTables", "rb_translation_uniprotkb_taxonomy_id_9986_AND_go_00064_2025_04_14.xlsx"))
+
+fastaTransform(zf, "Danio_rerio", here("OutputTables/"))
+fastaTransform(rb, "Rabbit", here("OutputTables/"))
+```
+
+These FASTA files will be used to run blastp to check for protein similarity.
+
+## Check unique peptides between species
+
+First I digest in silico with Trypsin, then filter for peptides >5 amino acids, as most search software will have that as default minimum peptide size.
+
+```{r, warning=FALSE, message=FALSE, results='hide'}
+# for Zf
+zf_digest <- DigestBatch(zf, "trypsin", 1)
+zf_digest <- filter(zf_digest, nchar(peptide) >= 5)
+colnames(zf_digest)[8] <- "Protein_zf"
+
+# for Rb
+# Fails because there's an aminoacid that doesn't exist
+
+# Split the string into individual characters
+temp <- unlist(strsplit(rb$Sequence, ""))
+# set unique characters
+unique_chars <- unique(temp)
+# Apparently, the rabbit sequences have an X aminoacid in it, which means it is an unknown aminoacid present in that part of the sequence
+rb[grepl("X", rb$Sequence),]
+
+# I choose to remove it since it's just one entry and because giving a different aminoacid will make the in silico # digest give false peptide predictions
+rb <- filter(rb, !Entry == "P33887")
+rb_digest <- DigestBatch(rb, "trypsin", 1)
+rb_digest <- filter(rb_digest, nchar(peptide) >= 5)
+colnames(rb_digest)[8] <- "Protein_rb"
+
+# now get only unique peptides from the zebrafish list
+Zf_Unique_Peptides <- filter(zf_digest, !peptide %in% rb_digest$peptide)
+
+# count how many unique peptides each protein has
+Zf_Unique_Peptides_count <- Zf_Unique_Peptides %>%
+  group_by(Protein_zf, Name) %>%
+  summarize(Unique_peptides = length(Protein_zf))
+Zf_Unique_Peptides_count <- Zf_Unique_Peptides_count[order(Zf_Unique_Peptides_count$Unique_peptides),]
+
+# save table
+write_csv(Zf_Unique_Peptides_count,
+          paste0(here("OutputTables/"), "zf_unique_peptides.csv"))
+```
+```{r}
+knitr::kable(head(Zf_Unique_Peptides_count))
+```
+
+## Now merge similarity tables with this to check unique peptides
+
+Now we can merge the blastp table with digestion table to check for unique peptides and how similar proteins are between the two species.
+
+```{r}
+blast <- fread(here("OutputTables", "ZF_vs_RB.tsv"))
+blast$Protein_zf <- str_split_fixed(blast$qseqid, "_", n=Inf)[,1]
+final_blast <- merge(blast, Zf_Unique_Peptides_count, by="Protein_zf")
+final_blast <- final_blast[order(final_blast$pident,decreasing = TRUE),]
+final_blast$Name <- gsub(" ", ";", final_blast$Name)
+final_blast <- relocate(final_blast, Name, .before = qseqid)
+final_blast <- relocate(final_blast, Unique_peptides, .before = pident)
+
+write_csv(final_blast,
+          paste0(here("OutputTables/"), "zf_unique_peptides_identity.csv"))
+
+knitr::kable(head(final_blast))
+```
+
+# Session Information
+```{r}
+sessionInfo()
+```
+

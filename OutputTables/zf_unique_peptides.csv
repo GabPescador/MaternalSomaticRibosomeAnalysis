@@ -1,0 +1,100 @@
+Protein_zf,Name,Unique_peptides
+Q6PC14,rpl23 zgc:73149,3
+Q6Q420,rps15a,3
+P61485,rpl36a,5
+Q6PBK3,rps28 zgc:73367,5
+Q7ZUG5,rps21,8
+Q8JGS9,rps18 ke3,8
+Q8JHJ1,rpl35,10
+Q7ZWJ7,rpl34,11
+Q6Q415,rpl36,12
+Q6NX89,eif5a zgc:77099,14
+Q7ZV82,rpl27 zgc:56171,14
+Q6P0V6,rpl8 zgc:73105,16
+P62084,rps7 zgc:73216,18
+P62247,rps8,18
+Q6PC69,rpl10a zgc:73082,18
+Q8JGR4,rpl24,18
+Q1LWG3,mrpl36 si:dkey-261i16.3,22
+Q6P5L3,rpl19 zgc:77733,25
+Q6PBY1,rps3a,25
+Q803F6,rpsa lamr1,26
+Q7ZWJ4,rpl18a zgc:56546,28
+Q502B0,mrpl41 zgc:112362,30
+Q7ZV96,rpl10 QM,30
+Q9DFS6,eif4ea,30
+Q66HY7,eif4e3 zgc:92189,31
+Q6ZM19,eif6 si:ch211-239j9.6,31
+Q7ZV34,mcts1 zgc:56242,31
+A2BHB7,gatc si:rp71-1c23.3,32
+Q502C1,mrps24 zgc:112331,32
+Q503H1,trnau1ap si:dkey-194c21.4 zgc:110606,33
+Q7ZUH5,mrpl14 zgc:56531,33
+Q567V6,eif3k eif3s12 zgc:110726,34
+Q5BJJ8,mrpl51 zgc:110255,34
+Q7SY07,eif1ad zgc:63631,34
+Q6IQS9,mrpl23 zgc:86630,35
+Q9PV90,rplp0 arp,35
+Q5SPH9,mrps10 im:6911513 si:ch211-51e12.6,37
+Q642H9,rps4x rps4 zgc:92076,37
+A5WUX7,mtrfr si:ch211-275j6.5,38
+Q6DH65,denr zgc:92629,40
+Q92005,eef1a ef1a,40
+Q9PW28,eif4e1b,40
+Q4KM14,trnau1apl secp43 trnau1ap trspap1 zgc:113964 zgc:77884,41
+Q5BJB7,mrpl10 zgc:112529,43
+Q7ZV55,eif3i eif3s2,43
+Q90Z10,rpl13,43
+Q6P5M2,skic8 wdr61 zgc:77675,45
+Q5EAQ1,mif4gdb zgc:110826,47
+Q498Z6,mrps7 zgc:110673,50
+Q803P1,eif3jb eif3s1b zgc:55443,50
+Q6DH02,mrpl24 si:ch211-210h11.6 zgc:92702,51
+O42248,gnb2l1 rack1,52
+Q7SXU0,eif3ja eif3j eif3s1a zgc:63801,54
+A1A5Z3,tsfm zgc:158429,55
+Q6P0E5,ddrgk1 zgc:56488,57
+Q5PR67,eif3hb eif3s3b zgc:123049,58
+Q503X2,mrpl4 zgc:110034,59
+Q6AXJ2,eif3ha eif3h eif3s3a,59
+Q6DRC4,eif3g eif3s4,60
+Q6DGL8,mrps15 zgc:92862,63
+Q6DGM3,mrpl15 zgc:92856,64
+Q498P2,mrps35 zgc:114150,65
+Q6PE25,eef1g,65
+Q7T3B0,eif3m si:ch211-4l14.1 zgc:63996,67
+Q7T3T8,zar1,70
+Q6PBS3,wars TrpRS zgc:73274,71
+Q6DEJ5,aarsd1 zgc:101066,73
+Q7ZWC4,pelo,75
+F1RB95,rnf14,77
+Q6DRC0,sars1 sars,77
+Q6DRI1,eif3ea eif3s6a int6,80
+Q7SXN4,cpeb4 zgc:66166,80
+Q501Z5,gtpbp3 zgc:112394,81
+Q1LUA8,eif3eb eif3s6b si:ch211-129b17.1,82
+Q7SXJ6,rnf25,82
+Q803J8,zc3h15 dfrp1,82
+Q9YGX5,cpeb1 zor1 zorba,82
+Q6P3J5,eef2b zgc:63584,83
+Q803A7,sepsecs sla/lpl zgc:55980,84
+Q1JPX3,farsa farsla zgc:136506 zgc:158185,85
+F1QGW6,eif2s3,86
+A0JML8,dalrd3 zgc:153958,91
+Q4QRJ7,eif2a zgc:110460,91
+F1QAJ4,qrsl1,92
+Q0P499,ears2 zgc:153247,94
+Q7T010,gatb pet112 pet112l si:ch211-150a22.1,96
+Q7T2A5,eif3l eif3eip eif3s6ip,100
+Q6TH15,eif3d eif3s7 si:dkey-165I8.6,103
+Q6TGS6,yars1 yars,111
+E9QI36,hars,117
+Q32LU7,ptcd3 zgc:123014,117
+F1QB54,pabpc1a,119
+A0JMI9,gfm2 efg2 si:dkey-35i22.3 zgc:153835,130
+Q08BB1,gfm1 efg1 zgc:154041,133
+Q6PGY6,ufl1 zgc:63562,136
+Q6PFQ2,eif3c eif3s8,176
+Q6PFK1,znf598 zfp598,177
+E7F8F4,ascc3,256
+Q6PCR7,eif3a eif3s10,318

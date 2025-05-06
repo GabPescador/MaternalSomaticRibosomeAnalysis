@@ -1,0 +1,221 @@
+Protein	Protein ID	Entry Name	Gene	Protein Length	Organism	Protein Existence	Description	Protein Probability	Top Peptide Probability	Combined Total Peptides	Combined Spectral Count	Combined Unique Spectral Count	Combined Total Spectral Count	Bad_oocyte_1 Spectral Count	Good_oocyte_1 Spectral Count	Bad_oocyte_1 Unique Spectral Count	Good_oocyte_1 Unique Spectral Count	Bad_oocyte_1 Total Spectral Count	Good_oocyte_1 Total Spectral Count	Bad_oocyte_1 Intensity	Good_oocyte_1 Intensity	Indistinguishable Proteins
+contam_sp|O77727|K1C15_SHEEP	O77727	K1C15_SHEEP	KRT15	453	Ovis aries	2:Experimental evidence at transcript level	Keratin, type I cytoskeletal 15	0.9993	0.9955	5	6	6	25	5	1	5	1	18	7	2.8747936E8	5697507.5	
+contam_sp|P00761|TRYP_PIG	P00761	TRYP_PIG		231	Sus scrofa	1:Experimental evidence at protein level	Trypsin	1.0	0.999	6	1035	1035	1035	641	394	641	394	641	394	3.26056387E10	1.7712982E10	
+contam_sp|P02662|CASA1_BOVIN	P02662	CASA1_BOVIN	CSN1S1	214	Bos taurus	1:Experimental evidence at protein level	Alpha-S1-casein	0.9991	0.964	3	4	4	4	2	2	2	2	2	2	0.0	3.0582972E7	
+contam_sp|P02663|CASA2_BOVIN	P02663	CASA2_BOVIN	CSN1S2	222	Bos taurus	1:Experimental evidence at protein level	Alpha-S2-casein	0.9949	0.9678	2	2	2	2	2	0	2	0	2	0	2680827.0	0.0	
+contam_sp|P02666|CASB_BOVIN	P02666	CASB_BOVIN	CSN2	224	Bos taurus	1:Experimental evidence at protein level	Beta-casein	0.9997	0.995	1	2	2	2	0	2	0	2	0	2	0.0	2.4944772E7	
+contam_sp|P04264|K2C1_HUMAN	P04264	K2C1_HUMAN	KRT1	644	Homo sapiens	1:Experimental evidence at protein level	Keratin, type II cytoskeletal 1	1.0	0.9989	28	144	120	144	77	67	64	56	77	67	8.6501638E8	1.17450138E9	
+contam_sp|P06732|KCRM_HUMAN	P06732	KCRM_HUMAN	CKM	381	Homo sapiens	1:Experimental evidence at protein level	Creatine kinase M-type	0.9998	0.999	1	7	7	7	4	3	4	3	4	3	1.82234163E9	9.4723789E8	
+contam_sp|P0DTE7|AMY1B_HUMAN	P0DTE7	AMY1B_HUMAN	AMY1B	511	Homo sapiens	1:Experimental evidence at protein level	Alpha-amylase 1B	1.0	0.9834	3	9	0	9	2	7	0	0	2	7	9.9273968E7	1.61869376E8	contam_sp|P0DTE8|AMY1C_HUMAN, contam_sp|P0DUB6|AMY1A_HUMAN
+contam_sp|P13645|K1C10_HUMAN	P13645	K1C10_HUMAN	KRT10	584	Homo sapiens	1:Experimental evidence at protein level	Keratin, type I cytoskeletal 10	1.0	0.9989	31	138	117	138	85	53	70	47	85	53	6.9001939E8	8.6658144E8	
+contam_sp|P35527|K1C9_HUMAN	P35527	K1C9_HUMAN	KRT9	623	Homo sapiens	1:Experimental evidence at protein level	Keratin, type I cytoskeletal 9	1.0	0.999	22	83	83	85	41	42	41	42	43	42	2.29158432E8	2.65261952E8	
+contam_sp|P35908|K22E_HUMAN	P35908	K22E_HUMAN	KRT2	639	Homo sapiens	1:Experimental evidence at protein level	Keratin, type II cytoskeletal 2 epidermal	1.0	0.9988	25	79	77	102	45	34	43	34	58	44	1.18044256E8	2.45311872E8	
+contam_sp|P62979|RS27A_HUMAN	P62979	RS27A_HUMAN	RPS27A	156	Homo sapiens	1:Experimental evidence at protein level	Ubiquitin-40S ribosomal protein S27a	1.0	0.996	3	14	14	14	8	6	8	6	8	6	7.7175896E7	5.7166916E7	
+contam_sp|Q15323|K1H1_HUMAN	Q15323	K1H1_HUMAN	KRT31	416	Homo sapiens	1:Experimental evidence at protein level	Keratin, type I cuticular Ha1	0.8472	0.9848	2	1	1	10	1	0	1	0	7	3	1.506787E7	0.0	
+sp|A0A0R4IBK5|R213A_DANRE	A0A0R4IBK5	R213A_DANRE	rnf213a	5209	Danio rerio	3:Protein inferred from homology	E3 ubiquitin-protein ligase rnf213-alpha	1.0	0.9952	1	1	1	1	1	0	1	0	1	0	2.28893008E8	0.0	
+sp|A0MTA1|APEX1_DANRE	A0MTA1	APEX1_DANRE	apex1	310	Danio rerio	1:Experimental evidence at protein level	DNA repair nuclease APEX1	1.0	0.999	19	35	35	35	23	12	23	12	23	12	1.03065459E9	1.99476112E8	
+sp|A1L243|MESD_DANRE	A1L243	MESD_DANRE	mesd	206	Danio rerio	2:Experimental evidence at transcript level	LRP chaperone MESD	0.9956	0.9855	2	2	2	2	1	1	1	1	1	1	2.6785222E7	3050553.0	
+sp|A3QK16|ERLN2_DANRE	A3QK16	ERLN2_DANRE	erlin2	331	Danio rerio	2:Experimental evidence at transcript level	Erlin-2	1.0	0.9902	6	6	6	6	6	0	6	0	6	0	3.4092068E7	0.0	
+sp|A4QNZ7|P33MX_DANRE	A4QNZ7	P33MX_DANRE	p33monox	317	Danio rerio	1:Experimental evidence at protein level	Putative monooxygenase p33MONOX	0.9225	0.9944	1	2	2	2	1	1	1	1	1	1	793458.94	149945.31	
+sp|A5HAK0|RNSL3_DANRE	A5HAK0	RNSL3_DANRE	rnasel3	149	Danio rerio	1:Experimental evidence at protein level	Ribonuclease-like 3	0.932	0.9952	1	1	1	1	1	0	1	0	1	0	5873459.5	0.0	
+sp|A5PF48|MYO1C_DANRE	A5PF48	MYO1C_DANRE	myo1c	1026	Danio rerio	3:Protein inferred from homology	Unconventional myosin-Ic	0.9644	0.9952	1	1	1	1	1	0	1	0	1	0	0.0	0.0	
+sp|A5PLK2|LHPP_DANRE	A5PLK2	LHPP_DANRE	lhpp	270	Danio rerio	2:Experimental evidence at transcript level	Phospholysine phosphohistidine inorganic pyrophosphate phosphatase	0.9901	0.9737	1	1	1	1	1	0	1	0	1	0	1889809.9	1229585.4	
+sp|A5PMX1|ZNT7_DANRE	A5PMX1	ZNT7_DANRE	slc30a7	387	Danio rerio	2:Experimental evidence at transcript level	Zinc transporter 7	0.932	0.9952	1	1	1	1	1	0	1	0	1	0	0.0	0.0	
+sp|A9JRC7|PP4CB_DANRE	A9JRC7	PP4CB_DANRE	ppp4cb	307	Danio rerio	2:Experimental evidence at transcript level	Serine/threonine-protein phosphatase 4 catalytic subunit B	1.0	0.999	4	6	4	6	4	2	2	2	4	2	6.8053024E7	2.0557814E7	
+sp|A9JRE2|MTNA_DANRE	A9JRE2	MTNA_DANRE	mri1	353	Danio rerio	2:Experimental evidence at transcript level	Methylthioribose-1-phosphate isomerase	0.932	0.9952	1	1	1	1	1	0	1	0	1	0	0.0	0.0	
+sp|B0R0D7|COR1C_DANRE	B0R0D7	COR1C_DANRE	coro1ca	474	Danio rerio	2:Experimental evidence at transcript level	Coronin-1C-A	1.0	0.9956	3	3	3	3	2	1	2	1	2	1	7380359.0	1.6604338E7	
+sp|B0S6C5|RTSTL_DANRE	B0S6C5	RTSTL_DANRE	retsatl	604	Danio rerio	1:Experimental evidence at protein level	Inactive all-trans-retinol 13,14-reductase	1.0	0.9984	27	101	101	101	31	70	31	70	31	70	1.39846113E10	6.355861E9	
+sp|B5DE31|YBOX1_DANRE	B5DE31	YBOX1_DANRE	ybx1	310	Danio rerio	1:Experimental evidence at protein level	Y-box-binding protein 1	1.0	0.995	4	13	13	13	4	9	4	9	4	9	5896290.0	2.3193568E7	
+sp|B8A5I7|SSBP_DANRE	B8A5I7	SSBP_DANRE	ssbp1	146	Danio rerio	1:Experimental evidence at protein level	Single-stranded DNA-binding protein, mitochondrial	1.0	0.9952	4	7	7	7	2	5	2	5	2	5	1.785779E7	6.7564368E7	
+sp|B8JMH0|CAF17_DANRE	B8JMH0	CAF17_DANRE	iba57	354	Danio rerio	3:Protein inferred from homology	Putative transferase CAF17 homolog, mitochondrial	0.9991	0.9962	1	2	2	2	1	1	1	1	1	1	2453436.8	2074771.1	
+sp|E7EY42|PTSS2_DANRE	E7EY42	PTSS2_DANRE	ptdss2	452	Danio rerio	3:Protein inferred from homology	Phosphatidylserine synthase 2	0.9965	0.9952	1	1	1	1	1	0	1	0	1	0	6071204.5	0.0	
+sp|E7FDW8|TRD7B_DANRE	E7FDW8	TRD7B_DANRE	tdrd7b	1085	Danio rerio	3:Protein inferred from homology	Tudor domain-containing protein 7B	0.6863	0.9705	1	1	1	1	1	0	1	0	1	0	0.0	0.0	
+sp|E9QI36|HARS1_DANRE	E9QI36	HARS1_DANRE	hars	513	Danio rerio	3:Protein inferred from homology	Histidine--tRNA ligase	1.0	0.993	3	4	1	4	2	2	1	0	2	2	5.5127024E7	3.1425104E7	
+sp|F1Q575|NNRD_DANRE	F1Q575	NNRD_DANRE	naxd	330	Danio rerio	3:Protein inferred from homology	ATP-dependent (S)-NAD(P)H-hydrate dehydratase	0.9995	0.9929	2	2	2	2	2	0	2	0	2	0	1.3649032E7	1765487.8	
+sp|F1QGW6|IF2G_DANRE	F1QGW6	IF2G_DANRE	eif2s3	472	Danio rerio	3:Protein inferred from homology	Eukaryotic translation initiation factor 2 subunit 3	1.0	0.999	6	12	12	12	6	6	6	6	6	6	1.57927104E8	1.46026784E8	
+sp|F1QWW8|KDSR_DANRE	F1QWW8	KDSR_DANRE	kdsr	332	Danio rerio	1:Experimental evidence at protein level	3-dehydrosphinganine reductase	0.9765	0.9984	1	2	2	2	1	1	1	1	1	1	3725859.2	1061177.8	
+sp|F1QXM5|LDHD_DANRE	F1QXM5	LDHD_DANRE	ldhd	497	Danio rerio	2:Experimental evidence at transcript level	Probable D-lactate dehydrogenase, mitochondrial	0.9982	0.9989	2	3	3	3	1	2	1	2	1	2	2.2369482E7	1.3903876E7	
+sp|F6P3G4|PS11A_DANRE	F6P3G4	PS11A_DANRE	psmd11a	421	Danio rerio	2:Experimental evidence at transcript level	26S proteasome non-ATPase regulatory subunit 11A	1.0	0.999	27	31	21	31	27	4	18	3	27	4	8.4564998E8	7.7812408E7	
+sp|F8W2M8|TPP1_DANRE	F8W2M8	TPP1_DANRE	tpp1	557	Danio rerio	1:Experimental evidence at protein level	Tripeptidyl-peptidase 1	1.0	0.9989	7	18	18	18	10	8	10	8	10	8	1.0095079E9	2.75695808E8	
+sp|O42248|GBLP_DANRE	O42248	GBLP_DANRE	gnb2l1	317	Danio rerio	1:Experimental evidence at protein level	Small ribosomal subunit protein RACK1	1.0	0.999	16	33	33	33	18	15	18	15	18	15	1.60217126E9	8.2138214E8	
+sp|O57521|HS90B_DANRE	O57521	HS90B_DANRE	hsp90ab1	725	Danio rerio	1:Experimental evidence at protein level	Heat shock protein HSP 90-beta	1.0	0.9793	17	22	20	22	15	7	14	6	15	7	5.9641126E8	7.6816563E8	
+sp|P13104|TPM1_DANRE	P13104	TPM1_DANRE	tpma	284	Danio rerio	2:Experimental evidence at transcript level	Tropomyosin alpha-1 chain	1.0	0.9989	5	10	10	10	6	4	6	4	6	4	2.7704816E8	5.862562E7	
+sp|P62084|RS7_DANRE	P62084	RS7_DANRE	rps7	194	Danio rerio	1:Experimental evidence at protein level	Small ribosomal subunit protein eS7	1.0	0.9951	1	1	1	1	1	0	1	0	1	0	2.7515148E7	4454949.0	
+sp|P62247|RS8_DANRE	P62247	RS8_DANRE	rps8	208	Danio rerio	1:Experimental evidence at protein level	Small ribosomal subunit protein eS8	0.9968	0.965	2	3	3	3	2	1	2	1	2	1	3995276.8	3822510.5	
+sp|P79733|RIR2_DANRE	P79733	RIR2_DANRE	rrm2	386	Danio rerio	1:Experimental evidence at protein level	Ribonucleoside-diphosphate reductase subunit M2	1.0	0.9985	12	20	20	20	10	10	10	10	10	10	2.63460672E8	8.185364E7	
+sp|P83571|RUVB2_DANRE	P83571	RUVB2_DANRE	ruvbl2	463	Danio rerio	1:Experimental evidence at protein level	RuvB-like 2	1.0	0.9971	7	7	7	7	4	3	4	3	4	3	7.7893392E7	4.0070296E7	
+sp|Q05AM4|FAH2B_DANRE	Q05AM4	FAH2B_DANRE	faah2b	526	Danio rerio	2:Experimental evidence at transcript level	Fatty-acid amide hydrolase 2-B	1.0	0.9698	6	8	8	8	4	4	4	4	4	4	1.26513424E8	6.5685332E7	
+sp|Q08C33|ISOC1_DANRE	Q08C33	ISOC1_DANRE	isoc1	283	Danio rerio	2:Experimental evidence at transcript level	Isochorismatase domain-containing protein 1	1.0	0.9971	4	5	5	5	4	1	4	1	4	1	4.4036712E7	2.2465042E7	
+sp|Q0IIP8|CRP_DANRE	Q0IIP8	CRP_DANRE	crp	225	Danio rerio	1:Experimental evidence at protein level	C-reactive protein	1.0	0.9885	5	8	8	8	4	4	4	4	4	4	1.50183184E8	4.39250784E8	
+sp|Q0P3Z2|PTER_DANRE	Q0P3Z2	PTER_DANRE	pter	349	Danio rerio	2:Experimental evidence at transcript level	Phosphotriesterase-related protein	1.0	0.998	6	9	9	9	4	5	4	5	4	5	1.24197128E8	7.0250616E7	
+sp|Q0P487|NB5R2_DANRE	Q0P487	NB5R2_DANRE	cyb5r2	309	Danio rerio	2:Experimental evidence at transcript level	NADH-cytochrome b5 reductase 2	0.7638	0.9798	1	1	1	1	1	0	1	0	1	0	2.7262542E7	0.0	
+sp|Q1JPS1|PCF5B_DANRE	Q1JPS1	PCF5B_DANRE	pcgf5b	232	Danio rerio	2:Experimental evidence at transcript level	Polycomb group RING finger protein 5-B	0.932	0.9952	1	1	1	1	1	0	1	0	1	0	0.0	0.0	
+sp|Q1MTD3|MCES_DANRE	Q1MTD3	MCES_DANRE	rnmt	400	Danio rerio	3:Protein inferred from homology	mRNA cap guanine-N7 methyltransferase	1.0	0.9989	6	8	8	8	7	1	7	1	7	1	9.494984E7	2907969.0	
+sp|Q1MTI4|TPISA_DANRE	Q1MTI4	TPISA_DANRE	tpi1a	248	Danio rerio	2:Experimental evidence at transcript level	Triosephosphate isomerase A	1.0	0.9949	7	10	10	10	3	7	3	7	3	7	9.045344E7	2.33367728E8	
+sp|Q32PL1|PP1R7_DANRE	Q32PL1	PP1R7_DANRE	ppp1r7	345	Danio rerio	2:Experimental evidence at transcript level	Protein phosphatase 1 regulatory subunit 7	0.9999	0.9985	3	3	3	3	2	1	2	1	2	1	1.3113484E7	1.0171422E7	
+sp|Q4QRK0|MAP11_DANRE	Q4QRK0	MAP11_DANRE	metap1	386	Danio rerio	2:Experimental evidence at transcript level	Methionine aminopeptidase 1	1.0	0.9989	4	4	4	4	4	0	4	0	4	0	6.6762796E7	0.0	
+sp|Q4VBV9|NIT2_DANRE	Q4VBV9	NIT2_DANRE	nit2	277	Danio rerio	2:Experimental evidence at transcript level	Omega-amidase NIT2	1.0	0.9976	5	8	8	8	5	3	5	3	5	3	1.23775288E8	6.9455968E7	
+sp|Q503C8|NUDC1_DANRE	Q503C8	NUDC1_DANRE	nudcd1	585	Danio rerio	2:Experimental evidence at transcript level	NudC domain-containing protein 1	1.0	0.997	7	9	9	9	2	7	2	7	2	7	3.4296912E7	1.27320112E8	
+sp|Q503E9|IMA6_DANRE	Q503E9	IMA6_DANRE	kpna5	539	Danio rerio	2:Experimental evidence at transcript level	Importin subunit alpha-6	0.9347	0.9954	1	1	1	1	0	1	0	1	0	1	0.0	6048126.0	
+sp|Q503S6|LTOR3_DANRE	Q503S6	LTOR3_DANRE	lamtor3	124	Danio rerio	2:Experimental evidence at transcript level	Ragulator complex protein LAMTOR3	0.932	0.9952	1	2	2	2	1	1	1	1	1	1	7.0754744E7	3.0195712E7	
+sp|Q568D5|BABA2_DANRE	Q568D5	BABA2_DANRE	babam2	386	Danio rerio	1:Experimental evidence at protein level	BRISC and BRCA1-A complex member 2	0.9844	0.9989	1	1	1	1	1	0	1	0	1	0	0.0	0.0	
+sp|Q568L5|A1A1B_DANRE	Q568L5	A1A1B_DANRE	akr1a1b	324	Danio rerio	2:Experimental evidence at transcript level	Aldo-keto reductase family 1 member A1-B	1.0	0.999	15	41	41	41	17	24	17	24	17	24	1.80178867E9	3.29117216E8	
+sp|Q568V3|FBX50_DANRE	Q568V3	FBX50_DANRE	nccrp1	237	Danio rerio	2:Experimental evidence at transcript level	F-box only protein 50	0.9998	0.9921	2	2	2	2	2	0	2	0	2	0	6.9485464E7	1355698.2	
+sp|Q58EB4|HIBCH_DANRE	Q58EB4	HIBCH_DANRE	hibch	382	Danio rerio	2:Experimental evidence at transcript level	3-hydroxyisobutyryl-CoA hydrolase, mitochondrial	1.0	0.9978	10	16	16	16	8	8	8	8	8	8	8.8429928E7	2.976713E7	
+sp|Q58EG2|ERLN1_DANRE	Q58EG2	ERLN1_DANRE	erlin1	342	Danio rerio	2:Experimental evidence at transcript level	Erlin-1	1.0	0.9982	3	4	4	4	2	2	2	2	2	2	1.6703798E7	1.4515496E7	
+sp|Q58EJ9|MARC1_DANRE	Q58EJ9	MARC1_DANRE	mtarc1	325	Danio rerio	2:Experimental evidence at transcript level	Mitochondrial amidoxime-reducing component 1	1.0	0.9974	9	13	13	13	5	8	5	8	5	8	6.8619856E7	7.9421912E7	
+sp|Q58EM4|ARMT1_DANRE	Q58EM4	ARMT1_DANRE	armt1	448	Danio rerio	2:Experimental evidence at transcript level	Damage-control phosphatase ARMT1	1.0	0.9904	5	6	6	6	2	4	2	4	2	4	1.17260152E8	4.6887908E7	
+sp|Q5BJJ7|BCCIP_DANRE	Q5BJJ7	BCCIP_DANRE	bccip	301	Danio rerio	2:Experimental evidence at transcript level	Protein BCCIP homolog	0.8847	0.9914	1	1	1	1	1	0	1	0	1	0	6918397.5	0.0	
+sp|Q5D016|PFD1_DANRE	Q5D016	PFD1_DANRE	pfdn1	122	Danio rerio	2:Experimental evidence at transcript level	Prefoldin subunit 1	1.0	0.9952	3	3	3	3	3	0	3	0	3	0	5.2200976E7	4444097.5	
+sp|Q5D018|RBM8A_DANRE	Q5D018	RBM8A_DANRE	rbm8a	174	Danio rerio	2:Experimental evidence at transcript level	RNA-binding protein 8A	0.8509	0.9885	1	1	1	1	1	0	1	0	1	0	2.2883628E7	0.0	
+sp|Q5MJ86|G3P2_DANRE	Q5MJ86	G3P2_DANRE	gapdh-2	335	Danio rerio	2:Experimental evidence at transcript level	Glyceraldehyde-3-phosphate dehydrogenase 2	1.0	0.9971	5	3	3	7	2	1	2	1	4	3	1.175642E7	387064.06	
+sp|Q5PRD0|143BA_DANRE	Q5PRD0	143BA_DANRE	ywhaba	244	Danio rerio	2:Experimental evidence at transcript level	14-3-3 protein beta/alpha-A	0.9999	0.9958	3	4	0	4	3	1	0	0	3	1	6.8699536E7	1.13002976E8	
+sp|Q5RGE6|HSP7E_DANRE	Q5RGE6	HSP7E_DANRE	hspa14	504	Danio rerio	2:Experimental evidence at transcript level	Heat shock 70 kDa protein 14	1.0	0.9756	5	6	6	6	2	4	2	4	2	4	9748158.0	1.2472994E7	
+sp|Q5RGQ2|ANM8B_DANRE	Q5RGQ2	ANM8B_DANRE	prmt8b	419	Danio rerio	2:Experimental evidence at transcript level	Protein arginine N-methyltransferase 8-B	0.6925	0.9713	1	1	1	1	0	1	0	1	0	1	0.0	0.0	
+sp|Q5SPD7|P5CR3_DANRE	Q5SPD7	P5CR3_DANRE	pycr3	288	Danio rerio	2:Experimental evidence at transcript level	Pyrroline-5-carboxylate reductase 3	1.0	0.9988	4	6	6	6	3	3	3	3	3	3	5.0606976E7	5.1764828E7	
+sp|Q5TYS5|SCRN2_DANRE	Q5TYS5	SCRN2_DANRE	scrn2	415	Danio rerio	2:Experimental evidence at transcript level	Secernin-2	1.0	0.9988	2	3	3	3	3	0	3	0	3	0	1.9108524E7	0.0	
+sp|Q5U3I2|S7A6O_DANRE	Q5U3I2	S7A6O_DANRE	slc7a6os	326	Danio rerio	2:Experimental evidence at transcript level	Probable RNA polymerase II nuclear localization protein SLC7A6OS	0.7885	0.9825	1	2	2	2	1	1	1	1	1	1	6630236.0	1416249.0	
+sp|Q5U3P0|PCID2_DANRE	Q5U3P0	PCID2_DANRE	pcid2	399	Danio rerio	2:Experimental evidence at transcript level	PCI domain-containing protein 2	0.9985	0.9808	2	2	2	2	1	1	1	1	1	1	2997114.5	4701188.5	
+sp|Q5U3U3|CPT2_DANRE	Q5U3U3	CPT2_DANRE	cpt2	669	Danio rerio	2:Experimental evidence at transcript level	Carnitine O-palmitoyltransferase 2, mitochondrial	1.0	0.9856	6	8	8	8	3	5	3	5	3	5	3.4759352E7	6.305198E7	
+sp|Q5U403|MVD1_DANRE	Q5U403	MVD1_DANRE	mvd	400	Danio rerio	2:Experimental evidence at transcript level	Diphosphomevalonate decarboxylase	1.0	0.9934	6	6	6	6	6	0	6	0	6	0	4.7625112E7	0.0	
+sp|Q5XIZ6|GPD1L_DANRE	Q5XIZ6	GPD1L_DANRE	gpd1l	351	Danio rerio	2:Experimental evidence at transcript level	Glycerol-3-phosphate dehydrogenase 1-like protein	1.0	0.9989	11	21	21	21	11	10	11	10	11	10	2.16966624E8	4.7649228E7	
+sp|Q5XJ10|G3P_DANRE	Q5XJ10	G3P_DANRE	gapdh	333	Danio rerio	2:Experimental evidence at transcript level	Glyceraldehyde-3-phosphate dehydrogenase	1.0	0.999	23	321	317	321	222	99	220	97	222	99	4.812943E10	1.230801E10	
+sp|Q5XJ36|PARK7_DANRE	Q5XJ36	PARK7_DANRE	park7	189	Danio rerio	2:Experimental evidence at transcript level	Parkinson disease protein 7 homolog	1.0	0.9902	6	13	13	13	5	8	5	8	5	8	6.5076877E8	4.31698656E8	
+sp|Q5XJ54|GLRX3_DANRE	Q5XJ54	GLRX3_DANRE	glrx3	326	Danio rerio	2:Experimental evidence at transcript level	Glutaredoxin 3	1.0	0.999	14	24	24	24	15	9	15	9	15	9	6.1873984E8	1.29168816E8	
+sp|Q5XJA5|HABP4_DANRE	Q5XJA5	HABP4_DANRE	habp4	347	Danio rerio	1:Experimental evidence at protein level	Intracellular hyaluronan-binding protein 4	1.0	0.999	7	21	21	21	12	9	12	9	12	9	4.74819328E8	8.8683296E7	
+sp|Q642M9|DHDH_DANRE	Q642M9	DHDH_DANRE	dhdh	334	Danio rerio	2:Experimental evidence at transcript level	Trans-1,2-dihydrobenzene-1,2-diol dehydrogenase	1.0	0.9986	8	14	14	14	9	5	9	5	9	5	1.3897608E8	4.3817252E7	
+sp|Q68EI0|WDR18_DANRE	Q68EI0	WDR18_DANRE	wdr18	431	Danio rerio	2:Experimental evidence at transcript level	WD repeat-containing protein 18	1.0	0.999	10	12	12	12	12	0	12	0	12	0	1.68817216E8	0.0	
+sp|Q6AXJ2|EI3HA_DANRE	Q6AXJ2	EI3HA_DANRE	eif3ha	335	Danio rerio	2:Experimental evidence at transcript level	Eukaryotic translation initiation factor 3 subunit H-A	1.0	0.9988	9	20	16	20	14	6	10	6	14	6	3.35479936E8	8.1185312E7	
+sp|Q6AZA0|THIL_DANRE	Q6AZA0	THIL_DANRE	acat1	420	Danio rerio	2:Experimental evidence at transcript level	Acetyl-CoA acetyltransferase, mitochondrial	1.0	0.999	14	32	32	32	13	19	13	19	13	19	5.6717056E8	4.51330432E8	
+sp|Q6AZB3|CPIN1_DANRE	Q6AZB3	CPIN1_DANRE	ciapin1	311	Danio rerio	2:Experimental evidence at transcript level	Anamorsin	1.0	0.999	7	14	14	14	7	7	7	7	7	7	2.37533584E8	2.6345282E7	
+sp|Q6DBT3|TXD17_DANRE	Q6DBT3	TXD17_DANRE	txndc17	123	Danio rerio	2:Experimental evidence at transcript level	Thioredoxin domain-containing protein 17	1.0	0.9952	3	3	3	3	2	1	2	1	2	1	9.3937608E7	7.2617848E7	
+sp|Q6DBU5|GMPPB_DANRE	Q6DBU5	GMPPB_DANRE	gmppb	360	Danio rerio	1:Experimental evidence at protein level	Mannose-1-phosphate guanylyltransferase catalytic subunit beta	1.0	0.9989	7	14	14	14	8	6	8	6	8	6	9.1001048E7	5.918274E7	
+sp|Q6DC37|HNMT_DANRE	Q6DC37	HNMT_DANRE	hnmt	292	Danio rerio	2:Experimental evidence at transcript level	Histamine N-methyltransferase	0.9998	0.9777	3	3	3	3	3	0	3	0	3	0	2.9700244E7	1.167043E7	
+sp|Q6DEG4|LTOR2_DANRE	Q6DEG4	LTOR2_DANRE	lamtor2	125	Danio rerio	2:Experimental evidence at transcript level	Ragulator complex protein LAMTOR2	0.9959	0.9952	1	1	1	1	1	0	1	0	1	0	1.7229986E7	0.0	
+sp|Q6DG91|PSMG1_DANRE	Q6DG91	PSMG1_DANRE	psmg1	277	Danio rerio	2:Experimental evidence at transcript level	Proteasome assembly chaperone 1	0.9925	0.9737	2	2	2	2	2	0	2	0	2	0	2.3672912E7	7235492.0	
+sp|Q6DGJ3|TIM13_DANRE	Q6DGJ3	TIM13_DANRE	timm13	95	Danio rerio	3:Protein inferred from homology	Mitochondrial import inner membrane translocase subunit Tim13	0.9849	0.9952	1	2	2	2	1	1	1	1	1	1	3.12679E7	1.6932344E7	
+sp|Q6DGQ0|SPT4H_DANRE	Q6DGQ0	SPT4H_DANRE	supt4h1	117	Danio rerio	3:Protein inferred from homology	Transcription elongation factor SPT4	0.932	0.9952	1	1	1	1	1	0	1	0	1	0	7983673.0	0.0	
+sp|Q6DGZ0|GPT11_DANRE	Q6DGZ0	GPT11_DANRE	gpatch11	262	Danio rerio	2:Experimental evidence at transcript level	G patch domain-containing protein 11	0.8012	0.9838	1	2	2	2	1	1	1	1	1	1	1793614.5	305712.22	
+sp|Q6DH65|DENR_DANRE	Q6DH65	DENR_DANRE	denr	208	Danio rerio	1:Experimental evidence at protein level	Density-regulated protein	0.9973	0.9969	1	2	2	2	1	1	1	1	1	1	1.5711714E7	1.2875922E7	
+sp|Q6DRC0|SYSC_DANRE	Q6DRC0	SYSC_DANRE	sars1	515	Danio rerio	1:Experimental evidence at protein level	Serine--tRNA ligase, cytoplasmic	1.0	0.9969	20	33	33	33	6	27	6	27	6	27	1.06292752E8	6.8684109E8	
+sp|Q6DRC4|EIF3G_DANRE	Q6DRC4	EIF3G_DANRE	eif3g	293	Danio rerio	1:Experimental evidence at protein level	Eukaryotic translation initiation factor 3 subunit G	1.0	0.999	10	18	18	18	12	6	12	6	12	6	2.74598624E8	3.0979624E7	
+sp|Q6DRF3|PSB1_DANRE	Q6DRF3	PSB1_DANRE	psmb1	237	Danio rerio	2:Experimental evidence at transcript level	Proteasome subunit beta type-1	1.0	0.9909	6	11	11	11	6	5	6	5	6	5	1.75576128E8	1.42573584E8	
+sp|Q6DRI1|EI3EA_DANRE	Q6DRI1	EI3EA_DANRE	eif3ea	446	Danio rerio	2:Experimental evidence at transcript level	Eukaryotic translation initiation factor 3 subunit E-A	1.0	0.9987	8	11	6	11	7	4	3	3	7	4	1.53588976E8	3.7612072E7	
+sp|Q6GMK8|GMPAA_DANRE	Q6GMK8	GMPAA_DANRE	gmppaa	422	Danio rerio	2:Experimental evidence at transcript level	Mannose-1-phosphate guanylyltransferase regulatory subunit alpha-A	0.9999	0.999	2	3	1	3	1	2	0	1	1	2	1.5487894E7	8758850.0	
+sp|Q6GQN8|MECR_DANRE	Q6GQN8	MECR_DANRE	mecr	377	Danio rerio	2:Experimental evidence at transcript level	Enoyl-[acyl-carrier-protein] reductase, mitochondrial	0.9936	0.9619	2	2	2	2	0	2	0	2	0	2	0.0	7312010.0	
+sp|Q6IQ73|CHM4C_DANRE	Q6IQ73	CHM4C_DANRE	chmp4c	224	Danio rerio	2:Experimental evidence at transcript level	Charged multivesicular body protein 4c	0.997	0.9988	1	2	2	2	1	1	1	1	1	1	1.8344092E7	9226702.0	
+sp|Q6IQE5|GET3_DANRE	Q6IQE5	GET3_DANRE	get3	341	Danio rerio	1:Experimental evidence at protein level	ATPase GET3	1.0	0.9986	3	4	4	4	3	1	3	1	3	1	6.3854904E7	7077364.0	
+sp|Q6IQM2|CYC_DANRE	Q6IQM2	CYC_DANRE	cyc	104	Danio rerio	3:Protein inferred from homology	Cytochrome c	1.0	0.9952	3	5	5	5	3	2	3	2	3	2	1.1623628E8	9.586824E7	
+sp|Q6IQS6|SAE1_DANRE	Q6IQS6	SAE1_DANRE	sae1	348	Danio rerio	2:Experimental evidence at transcript level	SUMO-activating enzyme subunit 1	1.0	0.9987	11	21	21	21	10	11	10	11	10	11	6.093817E8	2.48646032E8	
+sp|Q6NUW5|AN32E_DANRE	Q6NUW5	AN32E_DANRE	anp32e	250	Danio rerio	1:Experimental evidence at protein level	Acidic leucine-rich nuclear phosphoprotein 32 family member E	0.9998	0.991	3	4	4	4	3	1	3	1	3	1	4.6085168E7	4.0775504E7	
+sp|Q6NW76|AURKB_DANRE	Q6NW76	AURKB_DANRE	aurkb	320	Danio rerio	2:Experimental evidence at transcript level	Aurora kinase B	0.9136	0.9937	1	1	1	1	1	0	1	0	1	0	5133938.0	0.0	
+sp|Q6NWE0|CK054_DANRE	Q6NWE0	CK054_DANRE	zgc:85789	319	Danio rerio	2:Experimental evidence at transcript level	Ester hydrolase C11orf54 homolog	1.0	0.9981	3	3	3	3	1	2	1	2	1	2	1.0591422E7	1.1224052E7	
+sp|Q6NX08|WDR12_DANRE	Q6NX08	WDR12_DANRE	wdr12	422	Danio rerio	2:Experimental evidence at transcript level	Ribosome biogenesis protein wdr12	1.0	0.9617	3	3	3	3	1	2	1	2	1	2	7.1513256E7	1.9291086E7	
+sp|Q6NXA9|UBXN1_DANRE	Q6NXA9	UBXN1_DANRE	ubxn1	294	Danio rerio	2:Experimental evidence at transcript level	UBX domain-containing protein 1	0.7544	0.9788	1	2	2	2	1	1	1	1	1	1	4186960.0	1698307.5	
+sp|Q6NY64|2ABD_DANRE	Q6NY64	2ABD_DANRE	ppp2r2d	447	Danio rerio	2:Experimental evidence at transcript level	Serine/threonine-protein phosphatase 2A 55 kDa regulatory subunit B delta isoform	1.0	0.9788	5	6	6	6	2	4	2	4	2	4	3.7004916E7	2.2868876E7	
+sp|Q6NY74|RFA1_DANRE	Q6NY74	RFA1_DANRE	rpa1	601	Danio rerio	1:Experimental evidence at protein level	Replication protein A 70 kDa DNA-binding subunit	1.0	0.9944	8	10	10	10	3	7	3	7	3	7	1.060678E8	1.08966616E8	
+sp|Q6NYD7|OCAD1_DANRE	Q6NYD7	OCAD1_DANRE	ociad1	266	Danio rerio	2:Experimental evidence at transcript level	OCIA domain-containing protein 1	1.0	0.9985	5	6	6	6	4	2	4	2	4	2	7.2281152E7	6328747.5	
+sp|Q6NYS8|OST48_DANRE	Q6NYS8	OST48_DANRE	ddost	441	Danio rerio	2:Experimental evidence at transcript level	Dolichyl-diphosphooligosaccharide--protein glycosyltransferase 48 kDa subunit	1.0	0.999	15	21	21	21	19	2	19	2	19	2	8.1127795E8	4.7760352E7	
+sp|Q6P026|BAF_DANRE	Q6P026	BAF_DANRE	banf1	90	Danio rerio	1:Experimental evidence at protein level	Barrier-to-autointegration factor	1.0	0.9952	3	4	4	4	2	2	2	2	2	2	1.8087516E7	4.1347492E7	
+sp|Q6P0D9|CIAO1_DANRE	Q6P0D9	CIAO1_DANRE	ciao1	330	Danio rerio	2:Experimental evidence at transcript level	Probable cytosolic iron-sulfur protein assembly protein ciao1	1.0	0.9981	3	4	4	4	2	2	2	2	2	2	1.1611001E7	8159094.5	
+sp|Q6P0E5|DDRGK_DANRE	Q6P0E5	DDRGK_DANRE	ddrgk1	300	Danio rerio	2:Experimental evidence at transcript level	DDRGK domain-containing protein 1	0.9993	0.9966	2	2	2	2	2	0	2	0	2	0	3598439.0	0.0	
+sp|Q6P0H6|CSN4_DANRE	Q6P0H6	CSN4_DANRE	cops4	406	Danio rerio	2:Experimental evidence at transcript level	COP9 signalosome complex subunit 4	1.0	0.999	9	11	11	11	8	3	8	3	8	3	1.44446704E8	4856226.5	
+sp|Q6P0I8|EXOS6_DANRE	Q6P0I8	EXOS6_DANRE	exosc6	271	Danio rerio	2:Experimental evidence at transcript level	Exosome complex component MTR3	0.6497	0.9654	1	1	1	1	1	0	1	0	1	0	0.0	0.0	
+sp|Q6P0V6|RL8_DANRE	Q6P0V6	RL8_DANRE	rpl8	257	Danio rerio	1:Experimental evidence at protein level	Large ribosomal subunit protein uL2	1.0	0.9905	4	4	4	4	0	4	0	4	0	4	0.0	3761843.5	
+sp|Q6P298|NUBP1_DANRE	Q6P298	NUBP1_DANRE	nubp1	321	Danio rerio	2:Experimental evidence at transcript level	Cytosolic Fe-S cluster assembly factor nubp1	1.0	0.9975	3	5	5	5	3	2	3	2	3	2	4117753.5	3526781.0	
+sp|Q6P2U9|CSN3_DANRE	Q6P2U9	CSN3_DANRE	cops3	423	Danio rerio	2:Experimental evidence at transcript level	COP9 signalosome complex subunit 3	1.0	0.9979	4	7	7	7	5	2	5	2	5	2	5.5031364E7	2.1786646E7	
+sp|Q6P3H7|RBBP4_DANRE	Q6P3H7	RBBP4_DANRE	rbbp4	424	Danio rerio	2:Experimental evidence at transcript level	Histone-binding protein RBBP4	1.0	0.9988	6	10	7	10	3	7	2	5	3	7	1.19580648E8	3.4794448E8	
+sp|Q6P3J5|EF2_DANRE	Q6P3J5	EF2_DANRE	eef2b	858	Danio rerio	1:Experimental evidence at protein level	Elongation factor 2b	1.0	0.9625	10	15	15	15	6	9	6	9	6	9	4.71937216E8	3.83503072E8	
+sp|Q6P5L8|HSDL2_DANRE	Q6P5L8	HSDL2_DANRE	hsdl2	415	Danio rerio	2:Experimental evidence at transcript level	Hydroxysteroid dehydrogenase-like protein 2	1.0	0.999	24	38	38	38	31	7	31	7	31	7	1.1374336E9	7.27384E7	
+sp|Q6P5M2|SKI8_DANRE	Q6P5M2	SKI8_DANRE	skic8	305	Danio rerio	2:Experimental evidence at transcript level	Superkiller complex protein 8	1.0	0.9987	3	3	3	3	3	0	3	0	3	0	3.6870968E7	9027994.0	
+sp|Q6PBU0|F136A_DANRE	Q6PBU0	F136A_DANRE	fam136a	138	Danio rerio	2:Experimental evidence at transcript level	Protein FAM136A	0.991	0.9952	1	2	2	2	1	1	1	1	1	1	7389717.0	5106980.5	
+sp|Q6PBX5|MTND_DANRE	Q6PBX5	MTND_DANRE	adi1	181	Danio rerio	2:Experimental evidence at transcript level	Acireductone dioxygenase	0.7045	0.9729	1	1	1	1	0	1	0	1	0	1	0.0	2.0447012E7	
+sp|Q6PBY1|RS3A_DANRE	Q6PBY1	RS3A_DANRE	rps3a	267	Danio rerio	1:Experimental evidence at protein level	Small ribosomal subunit protein eS1	1.0	0.9983	6	9	9	9	7	2	7	2	7	2	1.34267184E8	1.978939E7	
+sp|Q6PC30|CSN5_DANRE	Q6PC30	CSN5_DANRE	cops5	334	Danio rerio	2:Experimental evidence at transcript level	COP9 signalosome complex subunit 5	1.0	0.999	7	8	8	8	4	4	4	4	4	4	3.1809996E7	7565040.0	
+sp|Q6PD83|5MP2A_DANRE	Q6PD83	5MP2A_DANRE	bzw1a	419	Danio rerio	2:Experimental evidence at transcript level	eIF5-mimic protein 2-A	1.0	0.999	15	20	12	20	18	2	10	2	18	2	7.6561267E8	1.5568836E7	
+sp|Q6PE25|EF1G_DANRE	Q6PE25	EF1G_DANRE	eef1g	442	Danio rerio	2:Experimental evidence at transcript level	Elongation factor 1-gamma	1.0	0.999	16	47	47	47	18	29	18	29	18	29	4.8772813E9	2.38862106E9	
+sp|Q6PFS7|ATG3_DANRE	Q6PFS7	ATG3_DANRE	atg3	317	Danio rerio	2:Experimental evidence at transcript level	Ubiquitin-like-conjugating enzyme ATG3	1.0	0.9989	3	7	7	7	4	3	4	3	4	3	7.8876584E7	5655509.0	
+sp|Q6PG29|SKAP2_DANRE	Q6PG29	SKAP2_DANRE	skap2	341	Danio rerio	2:Experimental evidence at transcript level	Src kinase-associated phosphoprotein 2	0.9995	0.9987	2	2	2	2	2	0	2	0	2	0	2.202909E7	0.0	
+sp|Q6PGV1|VA0D1_DANRE	Q6PGV1	VA0D1_DANRE	atp6v0d1	350	Danio rerio	1:Experimental evidence at protein level	V-type proton ATPase subunit d 1	1.0	0.9988	6	8	8	8	4	4	4	4	4	4	5.5754376E7	1.9830122E7	
+sp|Q6PH57|GBB1_DANRE	Q6PH57	GBB1_DANRE	gnb1	340	Danio rerio	2:Experimental evidence at transcript level	Guanine nucleotide-binding protein G(I)/G(S)/G(T) subunit beta-1	1.0	0.998	4	11	11	11	6	5	6	5	6	5	7.5980912E7	2.4207498E7	
+sp|Q6PHD9|SBP1_DANRE	Q6PHD9	SBP1_DANRE	selenbp1	457	Danio rerio	2:Experimental evidence at transcript level	Methanethiol oxidase	1.0	0.996	4	5	5	5	1	4	1	4	1	4	1.293323E7	1.29749728E8	
+sp|Q6PHE8|CC124_DANRE	Q6PHE8	CC124_DANRE	ccdc124	216	Danio rerio	2:Experimental evidence at transcript level	Coiled-coil domain-containing protein 124	1.0	0.9806	2	2	2	2	2	0	2	0	2	0	1.4973802E7	8479384.0	
+sp|Q6PHG2|HEMO_DANRE	Q6PHG2	HEMO_DANRE	hpx	447	Danio rerio	2:Experimental evidence at transcript level	Hemopexin	1.0	0.9744	3	3	3	3	0	3	0	3	0	3	0.0	2.0212224E7	
+sp|Q6PHK6|PURB_DANRE	Q6PHK6	PURB_DANRE	purb	297	Danio rerio	2:Experimental evidence at transcript level	Transcriptional regulator protein Pur-beta	0.9982	0.9717	2	2	2	2	2	0	2	0	2	0	1.0951694E7	0.0	
+sp|Q6Q415|RL36_DANRE	Q6Q415	RL36_DANRE	rpl36	105	Danio rerio	1:Experimental evidence at protein level	Large ribosomal subunit protein eL36	1.0	0.9952	3	4	4	4	1	3	1	3	1	3	0.0	1.0892016E7	
+sp|Q6QA33|DH12B_DANRE	Q6QA33	DH12B_DANRE	hsd17b12b	311	Danio rerio	2:Experimental evidence at transcript level	Very-long-chain 3-oxoacyl-CoA reductase-B	1.0	0.9977	4	5	3	5	4	1	2	1	4	1	8.4531736E7	4.3148308E7	
+sp|Q6TGS6|SYYC_DANRE	Q6TGS6	SYYC_DANRE	yars1	529	Danio rerio	2:Experimental evidence at transcript level	Tyrosine--tRNA ligase, cytoplasmic	1.0	0.9963	8	12	12	12	5	7	5	7	5	7	2.0664848E8	8.9477776E7	
+sp|Q6TGU2|SEH1_DANRE	Q6TGU2	SEH1_DANRE	seh1l	364	Danio rerio	2:Experimental evidence at transcript level	Nucleoporin SEH1	0.9999	0.9948	2	2	2	2	2	0	2	0	2	0	7096415.5	0.0	
+sp|Q6TGV7|ABRAL_DANRE	Q6TGV7	ABRAL_DANRE	abracl	81	Danio rerio	3:Protein inferred from homology	Costars family protein ABRACL	0.9999	0.9952	2	2	2	2	2	0	2	0	2	0	5.7659804E7	0.0	
+sp|Q6TH47|STBPA_DANRE	Q6TH47	STBPA_DANRE	stambpa	418	Danio rerio	2:Experimental evidence at transcript level	STAM-binding protein-like A	0.9471	0.9963	1	1	1	1	1	0	1	0	1	0	738169.3	0.0	
+sp|Q6TNU4|FEN1A_DANRE	Q6TNU4	FEN1A_DANRE	fen1	380	Danio rerio	2:Experimental evidence at transcript level	Flap endonuclease 1	1.0	0.9989	7	9	9	9	8	1	8	1	8	1	7.3456024E7	1097080.9	
+sp|Q7SX99|FUMH_DANRE	Q7SX99	FUMH_DANRE	fh	509	Danio rerio	2:Experimental evidence at transcript level	Fumarate hydratase, mitochondrial	1.0	0.999	13	28	28	28	9	19	9	19	9	19	7.8880531E8	6.799328E8	
+sp|Q7SXF6|CREL2_DANRE	Q7SXF6	CREL2_DANRE	creld2	341	Danio rerio	2:Experimental evidence at transcript level	Cysteine-rich with EGF-like domain protein 2	1.0	0.9969	4	6	6	6	4	2	4	2	4	2	3.0642054E7	1.1231112E7	
+sp|Q7SXP2|ULA1_DANRE	Q7SXP2	ULA1_DANRE	nae1	533	Danio rerio	2:Experimental evidence at transcript level	NEDD8-activating enzyme E1 regulatory subunit	1.0	0.9904	4	4	4	4	0	4	0	4	0	4	0.0	1.4545079E7	
+sp|Q7SXP4|SRS1A_DANRE	Q7SXP4	SRS1A_DANRE	srsf1a	257	Danio rerio	2:Experimental evidence at transcript level	Serine/arginine-rich splicing factor 1A	1.0	0.9868	5	6	2	6	5	1	1	1	5	1	2.9634594E7	9630759.0	
+sp|Q7SXS8|HPF1_DANRE	Q7SXS8	HPF1_DANRE	hpf1	348	Danio rerio	2:Experimental evidence at transcript level	Histone PARylation factor 1	0.9991	0.9957	2	3	3	3	1	2	1	2	1	2	1.1856862E7	1.9539806E7	
+sp|Q7SXV9|CALUB_DANRE	Q7SXV9	CALUB_DANRE	calub	315	Danio rerio	2:Experimental evidence at transcript level	Calumenin-B	1.0	0.9987	4	9	9	9	4	5	4	5	4	5	1.44923392E8	5.184128E7	
+sp|Q7SXW6|ARP2A_DANRE	Q7SXW6	ARP2A_DANRE	actr2a	394	Danio rerio	2:Experimental evidence at transcript level	Actin-related protein 2-A	1.0	0.9966	6	10	2	10	4	6	1	1	4	6	1.36015648E8	8.7195512E7	
+sp|Q7SYK7|AATM_DANRE	Q7SYK7	AATM_DANRE	got2a	428	Danio rerio	2:Experimental evidence at transcript level	Aspartate aminotransferase, mitochondrial	1.0	0.999	22	56	56	56	19	37	19	37	19	37	3.79132774E9	2.07218214E9	
+sp|Q7T2A5|EIF3L_DANRE	Q7T2A5	EIF3L_DANRE	eif3l	576	Danio rerio	2:Experimental evidence at transcript level	Eukaryotic translation initiation factor 3 subunit L	1.0	0.9987	14	22	22	22	7	15	7	15	7	15	1.395228E8	2.30703696E8	
+sp|Q7T2B9|MTPN_DANRE	Q7T2B9	MTPN_DANRE	mtpn	118	Danio rerio	3:Protein inferred from homology	Myotrophin	1.0	0.9952	4	5	5	5	2	3	2	3	2	3	4.4817184E7	2.5137174E7	
+sp|Q7T339|CHMP5_DANRE	Q7T339	CHMP5_DANRE	chmp5	220	Danio rerio	2:Experimental evidence at transcript level	Charged multivesicular body protein 5	0.9977	0.9989	1	1	1	1	1	0	1	0	1	0	3.1927272E7	0.0	
+sp|Q7T370|CDV3_DANRE	Q7T370	CDV3_DANRE	cdv3	236	Danio rerio	2:Experimental evidence at transcript level	Protein CDV3 homolog	1.0	0.9989	3	4	4	4	3	1	3	1	3	1	3.8188396E7	5091323.5	
+sp|Q7T385|VTC1A_DANRE	Q7T385	VTC1A_DANRE	atp6v1c1a	383	Danio rerio	2:Experimental evidence at transcript level	V-type proton ATPase subunit C 1-A	1.0	0.9986	3	5	3	5	3	2	2	1	3	2	2.7194294E7	8115648.0	
+sp|Q7T394|LIS1A_DANRE	Q7T394	LIS1A_DANRE	pafah1b1a	410	Danio rerio	2:Experimental evidence at transcript level	Lissencephaly-1 homolog A	1.0	0.999	15	19	10	19	17	2	9	1	17	2	3.21847872E8	1.0828383E7	
+sp|Q7T3B0|EIF3M_DANRE	Q7T3B0	EIF3M_DANRE	eif3m	375	Danio rerio	2:Experimental evidence at transcript level	Eukaryotic translation initiation factor 3 subunit M	1.0	0.9988	5	10	10	10	6	4	6	4	6	4	1.14589784E8	6.460062E7	
+sp|Q7T3C7|RT4I1_DANRE	Q7T3C7	RT4I1_DANRE	rtn4ip1	387	Danio rerio	2:Experimental evidence at transcript level	Reticulon-4-interacting protein 1 homolog, mitochondrial	1.0	0.9982	3	3	3	3	1	2	1	2	1	2	1.589617E7	2.1812172E7	
+sp|Q7T3E5|KAT3_DANRE	Q7T3E5	KAT3_DANRE	kyat3	450	Danio rerio	2:Experimental evidence at transcript level	Kynurenine--oxoglutarate transaminase 3	0.7623	0.9797	1	1	1	1	1	0	1	0	1	0	4.0380884E7	0.0	
+sp|Q7T3F7|CHRD1_DANRE	Q7T3F7	CHRD1_DANRE	chordc1	341	Danio rerio	2:Experimental evidence at transcript level	Cysteine and histidine-rich domain-containing protein 1	1.0	0.9764	4	4	4	4	2	2	2	2	2	2	4.1505116E7	1.2918298E7	
+sp|Q7T3H1|DCTN2_DANRE	Q7T3H1	DCTN2_DANRE	dctn2	405	Danio rerio	2:Experimental evidence at transcript level	Dynactin subunit 2	1.0	0.9948	5	6	6	6	2	4	2	4	2	4	4.522464E7	4.0523876E7	
+sp|Q7T3H9|HYI_DANRE	Q7T3H9	HYI_DANRE	hyi	276	Danio rerio	2:Experimental evidence at transcript level	Putative hydroxypyruvate isomerase	0.9915	0.9677	2	2	2	2	1	1	1	1	1	1	1.0321786E7	0.0	
+sp|Q7ZTY4|RBBP7_DANRE	Q7ZTY4	RBBP7_DANRE	rbbp7	426	Danio rerio	2:Experimental evidence at transcript level	Histone-binding protein RBBP7	1.0	0.999	5	7	7	10	2	5	2	5	3	7	9.762888E7	1.628876E8	
+sp|Q7ZU42|OLA1_DANRE	Q7ZU42	OLA1_DANRE	ola1	396	Danio rerio	2:Experimental evidence at transcript level	Obg-like ATPase 1	1.0	0.9989	19	23	23	23	21	2	21	2	21	2	5.7954534E8	2.5672824E7	
+sp|Q7ZU80|LNPA_DANRE	Q7ZU80	LNPA_DANRE	lnpka	393	Danio rerio	2:Experimental evidence at transcript level	Endoplasmic reticulum junction formation protein lunapark-A	0.9937	0.9747	2	2	1	2	1	1	0	1	1	1	0.0	2602372.5	
+sp|Q7ZUC2|CAB45_DANRE	Q7ZUC2	CAB45_DANRE	sdf4	356	Danio rerio	2:Experimental evidence at transcript level	45 kDa calcium-binding protein	1.0	0.996	3	5	5	5	5	0	5	0	5	0	3.0777484E7	0.0	
+sp|Q7ZUC7|PGES2_DANRE	Q7ZUC7	PGES2_DANRE	ptges2	377	Danio rerio	2:Experimental evidence at transcript level	Prostaglandin E synthase 2	1.0	0.9985	3	4	4	4	3	1	3	1	3	1	3.78667E7	1.1545653E7	
+sp|Q7ZUP0|AN32A_DANRE	Q7ZUP0	AN32A_DANRE	anp32a	254	Danio rerio	2:Experimental evidence at transcript level	Acidic leucine-rich nuclear phosphoprotein 32 family member A	1.0	0.9965	2	2	2	2	2	0	2	0	2	0	5.31432E7	2.8503304E7	
+sp|Q7ZV03|VP26B_DANRE	Q7ZV03	VP26B_DANRE	vps26b	331	Danio rerio	2:Experimental evidence at transcript level	Vacuolar protein sorting-associated protein 26B	0.9984	0.9681	2	4	4	4	2	2	2	2	2	2	6859288.5	2897099.8	
+sp|Q7ZV22|MTAP_DANRE	Q7ZV22	MTAP_DANRE	mtap	280	Danio rerio	2:Experimental evidence at transcript level	S-methyl-5'-thioadenosine phosphorylase	1.0	0.9982	10	21	21	21	12	9	12	9	12	9	4.07220896E8	2.56577232E8	
+sp|Q7ZV55|EIF3I_DANRE	Q7ZV55	EIF3I_DANRE	eif3i	325	Danio rerio	2:Experimental evidence at transcript level	Eukaryotic translation initiation factor 3 subunit I	1.0	0.999	9	17	17	17	11	6	11	6	11	6	3.1949552E8	6.2163376E7	
+sp|Q7ZV60|BCS1_DANRE	Q7ZV60	BCS1_DANRE	bcs1l	420	Danio rerio	2:Experimental evidence at transcript level	Mitochondrial chaperone BCS1	0.6887	0.9708	1	1	1	1	1	0	1	0	1	0	1548937.1	0.0	
+sp|Q7ZVA6|IF4A3_DANRE	Q7ZVA6	IF4A3_DANRE	eif4a3	406	Danio rerio	2:Experimental evidence at transcript level	Eukaryotic initiation factor 4A-III	1.0	0.9981	8	12	12	12	10	2	10	2	10	2	5.9234144E8	8.0612256E7	
+sp|Q7ZVB2|A9A1A_DANRE	Q7ZVB2	A9A1A_DANRE	aldh9a1a	508	Danio rerio	2:Experimental evidence at transcript level	4-trimethylaminobutyraldehyde dehydrogenase A	1.0	0.9962	16	28	27	28	8	20	8	19	8	20	5.7751661E8	2.05720883E9	
+sp|Q7ZVE6|PLGT2_DANRE	Q7ZVE6	PLGT2_DANRE	poglut2	500	Danio rerio	2:Experimental evidence at transcript level	Protein O-glucosyltransferase 2	0.9673	0.9886	1	1	1	1	0	1	0	1	0	1	0.0	6697149.0	
+sp|Q7ZVF3|SDHA_DANRE	Q7ZVF3	SDHA_DANRE	sdha	661	Danio rerio	2:Experimental evidence at transcript level	Succinate dehydrogenase [ubiquinone] flavoprotein subunit, mitochondrial	1.0	0.9981	13	25	25	25	11	14	11	14	11	14	6.3822579E8	3.65432704E8	
+sp|Q7ZVF9|ACTB2_DANRE	Q7ZVF9	ACTB2_DANRE	actbb	375	Danio rerio	1:Experimental evidence at protein level	Actin, cytoplasmic 2	1.0	0.9989	29	12	12	393	2	10	2	10	196	197	6548298.0	1.17919744E9	
+sp|Q7ZVI7|ACTB1_DANRE	Q7ZVI7	ACTB1_DANRE	actba	375	Danio rerio	1:Experimental evidence at protein level	Actin, cytoplasmic 1	1.0	0.999	29	405	24	405	205	200	11	13	205	200	5.6778101E10	2.85192704E10	
+sp|Q7ZVM1|WASC5_DANRE	Q7ZVM1	WASC5_DANRE	washc5	1159	Danio rerio	2:Experimental evidence at transcript level	WASH complex subunit 5	0.932	0.9952	1	1	1	1	1	0	1	0	1	0	0.0	0.0	
+sp|Q7ZVX6|UBA3_DANRE	Q7ZVX6	UBA3_DANRE	uba3	462	Danio rerio	2:Experimental evidence at transcript level	NEDD8-activating enzyme E1 catalytic subunit	1.0	0.9976	3	4	4	4	1	3	1	3	1	3	1.0999196E7	2.2731996E7	
+sp|Q7ZVY5|CISY_DANRE	Q7ZVY5	CISY_DANRE	cs	468	Danio rerio	2:Experimental evidence at transcript level	Citrate synthase, mitochondrial	1.0	0.9983	11	17	17	17	14	3	14	3	14	3	5.8645824E8	8.4673368E7	
+sp|Q7ZWD4|UAP1L_DANRE	Q7ZWD4	UAP1L_DANRE	uap1l1	505	Danio rerio	2:Experimental evidence at transcript level	UDP-N-acetylhexosamine pyrophosphorylase-like protein 1	1.0	0.9666	5	6	6	6	1	5	1	5	1	5	1.5531214E7	3.0511696E7	
+sp|Q7ZWJ7|RL34_DANRE	Q7ZWJ7	RL34_DANRE	rpl34	117	Danio rerio	1:Experimental evidence at protein level	Large ribosomal subunit protein eL34	0.9916	0.9692	2	3	3	3	1	2	1	2	1	2	1766769.4	1.5887548E7	
+sp|Q802F3|SEP15_DANRE	Q802F3	SEP15_DANRE	selenof	153	Danio rerio	2:Experimental evidence at transcript level	Selenoprotein F	0.997	0.9952	2	3	3	3	1	2	1	2	1	2	3937935.8	6964858.0	
+sp|Q802W2|A9A1B_DANRE	Q802W2	A9A1B_DANRE	aldh9a1b	518	Danio rerio	2:Experimental evidence at transcript level	4-trimethylaminobutyraldehyde dehydrogenase B	1.0	0.9754	6	5	5	6	0	5	0	5	0	6	0.0	1.1422096E8	
+sp|Q803D2|LIS1B_DANRE	Q803D2	LIS1B_DANRE	pafah1b1b	410	Danio rerio	2:Experimental evidence at transcript level	Lissencephaly-1 homolog B	1.0	0.9969	12	4	4	13	3	1	3	1	11	2	1.6561379E7	1519280.0	
+sp|Q803F5|APMAP_DANRE	Q803F5	APMAP_DANRE	apmap	415	Danio rerio	2:Experimental evidence at transcript level	Adipocyte plasma membrane-associated protein	1.0	0.999	7	8	8	8	8	0	8	0	8	0	9.89976E7	0.0	
+sp|Q803F6|RSSA_DANRE	Q803F6	RSSA_DANRE	rpsa	308	Danio rerio	1:Experimental evidence at protein level	Small ribosomal subunit protein uS2	1.0	0.999	12	40	40	40	20	20	20	20	20	20	1.30491494E9	1.26004723E9	
+sp|Q803P1|EI3JB_DANRE	Q803P1	EI3JB_DANRE	eif3jb	263	Danio rerio	2:Experimental evidence at transcript level	Eukaryotic translation initiation factor 3 subunit J-B	0.9582	0.9738	1	1	1	1	0	1	0	1	0	1	0.0	624635.56	
+sp|Q803S3|MEMO1_DANRE	Q803S3	MEMO1_DANRE	memo1	297	Danio rerio	2:Experimental evidence at transcript level	Protein MEMO1	0.6405	0.964	1	1	1	1	0	1	0	1	0	1	0.0	0.0	
+sp|Q8JFR5|KITA_DANRE	Q8JFR5	KITA_DANRE	kita	976	Danio rerio	2:Experimental evidence at transcript level	Mast/stem cell growth factor receptor kita	0.9159	0.9916	1	1	0	1	1	0	0	0	1	0	2.8651796E7	0.0	
+sp|Q8JFV8|VAT1_DANRE	Q8JFV8	VAT1_DANRE	vat1	484	Danio rerio	2:Experimental evidence at transcript level	Synaptic vesicle membrane protein VAT-1 homolog	1.0	0.9908	11	23	23	23	7	16	7	16	7	16	3.65971648E8	4.23296096E8	
+sp|Q8JGR4|RL24_DANRE	Q8JGR4	RL24_DANRE	rpl24	157	Danio rerio	2:Experimental evidence at transcript level	Large ribosomal subunit protein eL24	1.0	0.9858	4	9	9	9	4	5	4	5	4	5	1.0364183E7	1.882246E7	
+sp|Q8JH70|ALDCB_DANRE	Q8JH70	ALDCB_DANRE	aldocb	363	Danio rerio	2:Experimental evidence at transcript level	Fructose-bisphosphate aldolase C-B	1.0	0.999	15	29	29	29	14	15	14	15	14	15	3.05040512E8	3.09347104E8	
+sp|Q8JIU7|NACA_DANRE	Q8JIU7	NACA_DANRE	naca	215	Danio rerio	1:Experimental evidence at protein level	Nascent polypeptide-associated complex subunit alpha	1.0	0.999	5	18	18	18	9	9	9	9	9	9	2.08669107E9	9.3880397E8	
+sp|Q90473|HSP7C_DANRE	Q90473	HSP7C_DANRE	hspa8	649	Danio rerio	2:Experimental evidence at transcript level	Heat shock cognate 71 kDa protein	1.0	0.9965	21	56	56	56	22	34	22	34	22	34	5.5533409E9	3.89089152E9	
+sp|Q90YL4|S61A2_DANRE	Q90YL4	S61A2_DANRE	sec61al2	476	Danio rerio	2:Experimental evidence at transcript level	Protein transport protein Sec61 subunit alpha-like 2	0.9359	0.967	1	1	0	1	1	0	0	0	1	0	5494984.0	0.0	sp|Q90ZM2|S61A1_DANRE
+sp|Q92005|EF1A_DANRE	Q92005	EF1A_DANRE	eef1a	462	Danio rerio	2:Experimental evidence at transcript level	Elongation factor 1-alpha	1.0	0.999	20	84	84	84	40	44	40	44	40	44	8.8384102E9	5.8333343E9	
+sp|Q98SV1|SELPA_DANRE	Q98SV1	SELPA_DANRE	sepp1a	367	Danio rerio	1:Experimental evidence at protein level	Selenoprotein Pa	1.0	0.999	5	5	5	5	5	0	5	0	5	0	6.538436E7	3041467.5	
+sp|Q9DGE0|MP2K6_DANRE	Q9DGE0	MP2K6_DANRE	map2k6	361	Danio rerio	1:Experimental evidence at protein level	Dual specificity mitogen-activated protein kinase kinase 6	0.9999	0.997	3	6	6	6	2	4	2	4	2	4	1.8784694E7	1.1393837E7	
+sp|Q9DGK4|TCTP_DANRE	Q9DGK4	TCTP_DANRE	tpt1	171	Danio rerio	2:Experimental evidence at transcript level	Translationally-controlled tumor protein homolog	1.0	0.9951	8	16	16	16	8	8	8	8	8	8	1.08758106E9	2.94461856E8	
+sp|Q9I9N0|DAP1B_DANRE	Q9I9N0	DAP1B_DANRE	dap1b	109	Danio rerio	1:Experimental evidence at protein level	Death-associated protein-like 1 homolog	1.0	0.9952	3	3	3	3	2	1	2	1	2	1	5.8435584E7	2.3726952E7	
+sp|Q9MIY0|NU5M_DANRE	Q9MIY0	NU5M_DANRE	mt-nd5	606	Danio rerio	3:Protein inferred from homology	NADH-ubiquinone oxidoreductase chain 5	0.8738	0.9905	1	1	1	1	1	0	1	0	1	0	1765727.4	0.0	
+sp|Q9MIY7|COX2_DANRE	Q9MIY7	COX2_DANRE	mt-co2	230	Danio rerio	3:Protein inferred from homology	Cytochrome c oxidase subunit 2	0.9697	0.9889	1	2	2	2	1	1	1	1	1	1	3.4393796E7	1.0549552E7	
+sp|Q9PT92|CATA_DANRE	Q9PT92	CATA_DANRE	cat	526	Danio rerio	2:Experimental evidence at transcript level	Catalase	1.0	0.9987	15	54	46	54	9	45	8	38	9	45	8.55152E8	1.04564442E9	
+sp|Q9PTP1|PCNA_DANRE	Q9PTP1	PCNA_DANRE	pcna	260	Danio rerio	1:Experimental evidence at protein level	Proliferating cell nuclear antigen	1.0	0.9982	7	10	10	10	9	1	9	1	9	1	5.8435616E8	2.51458E7	
+sp|Q9PTS2|DCUP_DANRE	Q9PTS2	DCUP_DANRE	urod	369	Danio rerio	1:Experimental evidence at protein level	Uroporphyrinogen decarboxylase	1.0	0.9947	7	9	9	9	2	7	2	7	2	7	1.23854744E8	1.06398264E8	
+sp|Q9PV90|RLA0_DANRE	Q9PV90	RLA0_DANRE	rplp0	319	Danio rerio	2:Experimental evidence at transcript level	Large ribosomal subunit protein uL10	1.0	0.999	11	31	31	31	15	16	15	16	15	16	1.4931383E9	4.95179488E8	
+sp|Q9PVK4|LDHBA_DANRE	Q9PVK4	LDHBA_DANRE	ldhba	334	Danio rerio	2:Experimental evidence at transcript level	L-lactate dehydrogenase B-A chain	1.0	0.9989	16	80	56	80	47	33	32	24	47	33	1.32070021E10	6.9953833E9	
+sp|Q9PVK5|LDHA_DANRE	Q9PVK5	LDHA_DANRE	ldha	333	Danio rerio	2:Experimental evidence at transcript level	L-lactate dehydrogenase A chain	1.0	0.996	6	5	5	18	4	1	4	1	12	6	7.8987784E7	0.0	
+sp|Q9PW80|IF2B3_DANRE	Q9PW80	IF2B3_DANRE	igf2bp3	582	Danio rerio	1:Experimental evidence at protein level	Insulin-like growth factor 2 mRNA-binding protein 3	1.0	0.9957	8	14	12	14	6	8	5	7	6	8	1.7532056E8	1.91628016E8	
+sp|X1WER2|UBA5_DANRE	X1WER2	UBA5_DANRE	uba5	398	Danio rerio	3:Protein inferred from homology	Ubiquitin-like modifier-activating enzyme 5	1.0	0.9957	4	5	5	5	1	4	1	4	1	4	124616.64	4.7389488E7	
